@@ -6,19 +6,17 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:02:18 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/04/04 23:20:15 by user             ###   ########.fr       */
+/*   Updated: 2022/04/08 16:27:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int     ft_putspecs(t_param *f, va_list ap)
+char     *ft_putspecs(t_param *f, va_list ap)
 {
     char    *print;
-    int         len;
 
-    len = 0;
     if (f->type == 'i' || f->type == 'd')
         print = print_num(va_arg(ap, int));
     if (f->type == 'c')
@@ -37,8 +35,5 @@ int     ft_putspecs(t_param *f, va_list ap)
         print = print_c('%');
     else
         print = ft_calloc(sizeof(char), 1);
-    len = ft_strlen(print);
-    ft_putstr_fd(print,1);
-    free (print);
-    return (len);
+    return (print);
 }
