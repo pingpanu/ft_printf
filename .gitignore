@@ -1,3 +1,6 @@
 a.out
 libft/
 printf_study
+Othello42-ft_printf-tester/
+ft_printf_tester/
+*.a
