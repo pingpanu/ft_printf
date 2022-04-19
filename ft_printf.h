@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/04/08 16:16:22 by user             ###   ########.fr       */
+/*   Updated: 2022/04/16 20:54:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdarg.h>
 
 # define SPECS  "cspdiuxX%"
+# define DIGIT  "0123456789"
+# define HEXLO  "0123456789abcdef"
+# define HEXCAP "0123456789ABCDEF"
 
 typedef struct s_param
 {
@@ -33,14 +36,17 @@ typedef struct s_param
 
 /*function in main printf*/
 int		    ft_printf(const char *format, ...);
-int         ft_putall(t_param *f, va_list ap);
-int		    ft_putspecs(t_param *f, va_list ap);
+int         ft_putall(t_param f, va_list ap);
 t_param get_params(const char *fmt, t_param *f, int *i);
+char    *ft_putspecs(t_param *f, va_list ap);
+char    *ft_printflag(char *buf, t_param f);
+char    *ft_printwifth (char *str, t_param f);
+char    *ft_dowidth(char *str, t_param *f);
 /*function in print_cases*/
-int		printf_char(const char *fmt, va_list ap, int len);
-int		printf_num(const char *fmt, va_list ap, int len);
-int		printf_oc(const char *fmt, va_list ap, int len);
-int		printf_hex(const char *fmt, va_list ap, int len);
-int		printf_hexup(const char *fmt, va_list ap, int len);
-int		printf_string(const char *fmt, va_list ap, int len);
+char    *print_c(char c);
+char    *print_s(char *str);
+char    *print_id(int nbr);
+char    *print_u(int nb);
+char    *print_p(unsigned long int ptr);
+char    *print_x(int nb, int iscap);
 #endif

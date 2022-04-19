@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:02:18 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/04/08 16:27:15 by user             ###   ########.fr       */
+/*   Updated: 2022/04/12 17:06:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char     *ft_putspecs(t_param *f, va_list ap)
     char    *print;
 
     if (f->type == 'i' || f->type == 'd')
-        print = print_num(va_arg(ap, int));
+        print = print_id(va_arg(ap, int));
     if (f->type == 'c')
         print = print_c(va_arg(ap, char));
     if (f->type == 's')

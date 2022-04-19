@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:01:48 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/04/08 16:18:27 by user             ###   ########.fr       */
+/*   Updated: 2022/04/16 20:52:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_printf(const char *format, ...)
 		{
 			i += 1;
 			f = get_params(format, &f, &i);
-			done += ft_putall(&f, arg);
+			done += ft_putall(f, arg);
 		}
 	}
 	va_end (arg);
