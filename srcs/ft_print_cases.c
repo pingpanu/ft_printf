@@ -6,12 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:17:19 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/04/13 21:24:45 by user             ###   ########.fr       */
+/*   Updated: 2022/04/25 16:00:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 char     *print_c(char c)
 {
@@ -47,10 +47,8 @@ char    *print_u(int nb)
     char    *out;
     unsigned int    uit;
 
-    if (nb < 0 && nb > -4294967295)
+    if (nb < 0)
         uit = 4294967295 + nb + 1;
-    else if (nb <= - 4294967295)
-        uit = 0;
     else
         uit = nb;
     out = ft_itoa_base(DIGIT, uit);

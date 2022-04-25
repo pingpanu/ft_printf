@@ -6,7 +6,7 @@
 #    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/04/19 09:58:55 by user             ###   ########.fr        #
+#    Updated: 2022/04/19 22:49:26 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,9 @@ RM = /bin/rm -f
 
 INC = ft_printf.h
 LIBFT_DIR = ./libft
-BUILD_DIR = build
+LIBFT = $(LIBFT_DIR)/libft.a
 
+BUILD_DIR = build
 SRC = ft_printf.c \
 	  get_params.c \
 	  ft_putall.c \
@@ -26,18 +27,18 @@ SRC = ft_printf.c \
 	  ft_print_cases.c \
 	  ft_printflag.c \
 	  ft_printwidth.c \
-	  ft_dowidth.c \
+	  ft_dowidth.c 
 
-OBJS = $(%.c=$(BUILD_DIR)/%.o)
+OBJS = $(.c=$(BUILD_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-		 @echo "Compiling $@"
+		 @echo "Composing $@"
 		 @ar rc $(NAME) $(OBJS)
 		 @echo "Done!"
 
-$(OBJS) :(BUILD_DIR)/%.o:%.c
+$(OBJS) :$(BUILD_DIR)/%.o:$%.c
 		 @mkdir -p $(@D)
 		 @echo "Compiling $<"
 		 @$(CC) $(FLAGS) -I $(INC) -I $(LIBFT_DIR) -c $< -o $@

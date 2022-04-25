@@ -6,20 +6,22 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 21:22:28 by user              #+#    #+#             */
-/*   Updated: 2022/04/16 20:41:19 by user             ###   ########.fr       */
+/*   Updated: 2022/04/25 16:00:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+#include "libft.h"
 
-char    *ft_printwidth(char *str, t_param f)
+static char *doprecision(char *str, int prc);
+
+char    *ft_printwidth(char *str, t_param *f)
 {
     char    *dstr;
 
-    if (f.precision == 0 && f.dot == 1)
+    if (f->precision == 0 && f->dot == 1)
     {
-        if (f.type == 'c' || f.type == 's')
+        if (f->type == 'c' || f->type == 's')
             return(ft_putnull);
         else
         {
@@ -27,9 +29,9 @@ char    *ft_printwidth(char *str, t_param f)
             dstr[0] = ' ';
         }
     }
-    if (f.precision > 0)
-        dstr = doprecision(str, f.precision);
-    if (f.width > f.precision)
+    if (f->precision > 0)
+        dstr = doprecision(str, f->precision);
+    if (f->width > f->precision)
         dstr = ft_dowidth(dstr, &f);
     return (dstr);
 }

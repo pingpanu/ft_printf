@@ -6,11 +6,11 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:43:58 by user              #+#    #+#             */
-/*   Updated: 2022/04/08 16:15:11 by user             ###   ########.fr       */
+/*   Updated: 2022/04/25 16:00:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 #include "ft_printf.h"
 
 void    reset_param(t_param *f)
@@ -45,7 +45,7 @@ t_param get_params(const char *fmt, t_param *f, int *i)
             f->width = (f->width * 10) + (fmt[*i] - '0');
         if (fmt[*i] == 1 && ft_isdigit(fmt[*i]))
             f->precision = (f->precision * 10) + (fmt[*i] - '0');
-        if (is_exist(SPECS, fmt[*i]))
+        if (ft_exist(SPECS, fmt[*i]))
             f->type = fmt[*i];
         (*i)++;
     }

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/04/16 20:54:03 by user             ###   ########.fr       */
+/*   Updated: 2022/04/20 23:52:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ typedef struct s_param
 
 /*function in main printf*/
 int		    ft_printf(const char *format, ...);
-int         ft_putall(t_param f, va_list ap);
+int         ft_putall(t_param *f, va_list ap);
 t_param get_params(const char *fmt, t_param *f, int *i);
 char    *ft_putspecs(t_param *f, va_list ap);
-char    *ft_printflag(char *buf, t_param f);
-char    *ft_printwifth (char *str, t_param f);
+char    *ft_printflag(char *buf, t_param *f);
+char    *ft_printwidth (char *str, t_param *f);
 char    *ft_dowidth(char *str, t_param *f);
 /*function in print_cases*/
 char    *print_c(char c);

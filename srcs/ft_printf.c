@@ -6,12 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:01:48 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/04/16 20:52:10 by user             ###   ########.fr       */
+/*   Updated: 2022/04/21 00:37:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+
+static int	ft_putall(t_param *f, va_list ap);
 
 int	ft_printf(const char *format, ...)
 {
@@ -34,9 +36,21 @@ int	ft_printf(const char *format, ...)
 		{
 			i += 1;
 			f = get_params(format, &f, &i);
-			done += ft_putall(f, arg);
+			done += ft_putall(&f, arg);
 		}
 	}
 	va_end (arg);
 	return (done);
+}
+
+static int ft_putall(t_param *f, va_list ap)
+{
+    char    *out;
+    int     len;
+
+    out = ft_putspecs(f, ap);
+	len = ft_strlen(out);
+	ft_putstr_fd(out, 1);
+	free(out);
+    return (len);
 }

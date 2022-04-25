@@ -6,15 +6,15 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:32:51 by user              #+#    #+#             */
-/*   Updated: 2022/04/15 15:01:11 by user             ###   ########.fr       */
+/*   Updated: 2022/04/25 16:00:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+#include "libft.h"
 
-static char addright(int wdiff, char str);
-static char addleft(int wdiff, char str, t_param *f);
+static char addright(int wdiff, char *str);
+static char addleft(int wdiff, char *str, t_param *f);
 
 char    *ft_dowidth(char *str, t_param *f)
 {
@@ -27,15 +27,15 @@ char    *ft_dowidth(char *str, t_param *f)
     else
     {
         if (f->minus == 1)
-            out = addright(wdiff, str);
+            out = addright(wdiff, *str);
         else
-            out = addleft(wdiff, str, &f);
+            out = addleft(wdiff, *str, f);
         free(str);
         return (out);
     }
 }
 
-static char addright(int wdiff, char str)
+static char addright(int wdiff, char *str)
 {
     char    *rstr;
     int     i;
@@ -49,7 +49,7 @@ static char addright(int wdiff, char str)
     return (str);   
 }
 
-static char addleft(int wdiff, char str, t_param *f)
+static char addleft(int wdiff, char *str, t_param *f)
 {
     char    *rstr;
     int     i;
