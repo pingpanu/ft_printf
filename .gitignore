@@ -1,6 +1,6 @@
 a.out
 libft/
-printf_study
+printf_study.c
 Othello42-ft_printf-tester/
 ft_printf_tester/
 *.a
