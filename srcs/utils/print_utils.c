@@ -6,59 +6,66 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 21:45:05 by user              #+#    #+#             */
-/*   Updated: 2022/04/28 23:41:45 by user             ###   ########.fr       */
+/*   Updated: 2022/05/06 23:26:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int  ft_intlen(size_t base, int n)
-{
-    size_t  len;
-    size_t  ui;
+/*for test only*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-    len = 0;
-    if (n < 0)
-    {
-        ui = -n;
-        len += 1;
-    }
-    else
-        ui = n;
-    while (ui != 0)
-    {
-        n = n / base;
-        len++;
-    }
-    return (len);
+char    *idput(char *buf, int len, int blen)
+{
+    char    *out;
+
+    out = calloc(1, (len + 1));
+    if (!out)
+        return (NULL);
+    len -= 1;
+    while (blen >= 0 && ft_isdigit(buf[blen]))
+            out[len--] = buf[blen--];
+    while (len >= 0)
+        out[len--] = '0';
+    return (out);
 }
 
-void puthex(char *c, t_param *f, int n)
+char putflag(t_param *f, int n)
 {
-    size_t  ui;
-    int     i;
+    if (f->type == 'i' || f->type == 'd')
+    {
+        if (n >= 0 && (f->plus || f->space))
+        {
+            if (f->plus)
+                return ('+');
+            if (f->space)
+                return (' ');
+        }
+        if (n < 0)
+            return ('-');
+    }
+    if (f->type == 'x' || f->type == 'X')
+    {
+        if (f->hash)
+            return (f->type);
+    }
+    return ('0');
+}
 
-    if (f->plus && n >= 0)
-        c[0] = '+';
-    if (f->space && n >= 0)
-        c[0] = ' ';
-    if (n < 0)
-    {
-        c[0] = '-';
-        ui = n * -1;
-    }
-    else
-        ui = n;
-    i = 0;
-    if (c[i] == '+' || c[i] == '-' || c[i] == ' ')
-        i = 1;
-    while (c[i++])
-    {
-        if (i < f->precision)
-            c[i] = '0';
-        else
-            c[i] = DIGIT[ui % 10];
-    }
-    return (c);
+char *xput(char *buf, int len, int blen)
+{
+    char    *out;
+
+    out = calloc(1, (len + 1));
+    if (!out)
+        return (NULL);
+    len -= 1;
+    while (blen >= 0)
+            out[len--] = buf[blen--];
+    while (len >= 0)
+        out[len--] = '0';
+    return (out);
 }

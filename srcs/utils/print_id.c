@@ -6,14 +6,18 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:23:50 by user              #+#    #+#             */
-/*   Updated: 2022/04/30 23:02:32 by user             ###   ########.fr       */
+/*   Updated: 2022/05/06 22:40:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+//#include "libft.h"
 #include "ft_printf.h"
 
-static char flag_id(t_param *f, int n);
+/*for test only*/
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+char    *ft_itoa(int n);
 
 char    *print_id(int nbr, t_param *f)
 {
@@ -22,44 +26,41 @@ char    *print_id(int nbr, t_param *f)
     int         len;
     int         blen;
 
-    if (f->dot && f->precision == 0 && nbr == 0)
+    if (f->dot == 1 && f->precision == 0 && nbr == 0)
+        return ("");
+    buf = ft_itoa(nbr);
+    if (!buf)
         return (NULL);
-    buf = ft_uitoa_base(DIGIT, (unsigned int *)nbr);
-    len = ft_strlen(buf);
-    blen = len;
+    blen = strlen(buf);
+    if (f->precision <= blen && !f->space && !f->plus)
+        return (buf);
+    len = blen;
     if (f->precision > blen)
         len = f->precision;
     if (f->plus || f->space || nbr < 0)
         len += 1;
-    out = (char *)ft_calloc(1, (len + 1));
-    if (!out)
-        return(NULL);
-    while (len >= 0)
-    {
-        if (blen >= 0)
-            out[len--] = buf[blen--];
-        out[len--] = '0'; 
-    }
-    out[0] = getflag(f, nbr);
+    out = idput(buf, len, (blen - 1));
     free(buf);
-    return (out);
+    if (out)
+    {
+        out[0] = putflag(f, nbr);
+        return (out);
+    }
+    return(NULL);
 }
 
-static char flag_id(t_param *f, int n)
+/*for test only*/
+int main()
 {
-    char    flag;
+    t_param f;
+    char    *out;
 
-    if ((n >= 0 && (f->plus || f->space)) || n < 0)
-    {
-        if (f->plus)
-            flag = '+';
-        if (f->space)
-            flag = ' ';
-        if (n < 0)
-            flag = '-';
-        return (flag);
-    }
-    else
-        flag = '0';
-    return (flag);
+    f.type = 'd';
+    f.dot = 1;
+    f.plus = 1;
+    f.space = 0;
+    f.precision = 0;
+    out = print_id(0, &f);
+    printf("%s\n",out);
+    return (0);
 }

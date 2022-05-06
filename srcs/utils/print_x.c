@@ -6,14 +6,19 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 21:47:45 by user              #+#    #+#             */
-/*   Updated: 2022/04/30 23:10:47 by user             ###   ########.fr       */
+/*   Updated: 2022/05/06 23:26:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-static char *putbuf_x(char c, unsigned int unb);
+/*for test only*/
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+static char *xlocap(char c, unsigned int unb);
 
 char    *print_x(unsigned int unb, t_param *f)
 {
@@ -23,34 +28,52 @@ char    *print_x(unsigned int unb, t_param *f)
     int         len;
 
     if (f->dot && !f->precision && unb == 0)
+        return ("");
+    buf = xlocap(f->type, unb);
+    if (!buf)
         return (NULL);
-    buf = putbuf_x(f->type, unb);
-    len = ft_strlen(buf);
-    blen = len;
+    blen = strlen(buf);
+    if (f->precision <= blen && !f->hash)
+        return (buf);
+    len = blen;
     if (f->precision > blen)
         len = f->precision;
     if (f->hash)
         len += 2;
-    out = ft_calloc(1, (len + 1));
-    if (!out)
-        return (NULL);
-    while (len >= 0)
+    out = xput(buf, len, (blen - 1));
+    free (buf);
+    if (out)
     {
-        if (blen >= 0)
-            out[len--] = buf[blen--];
-        out[len--] = '0';
-        if (f->hash && len == 1)
-            out[len--] = f->type;
+        out[1] = putflag(f, unb);
+        return (out);
     }
-    return (out);
+    return (NULL);
 }
 
-static char *putbuf_x(char c, unsigned int unb)
+static char *xlocap(char c, unsigned int unb)
 {
-    char    *res;
+    char    *buf;
 
-    if (c = 'X')
-        res = ft_itoa_base(HEXCAP, unb);
+    if (c == 'X')
+        buf = ft_uitoa_base(HEXCAP, unb);
     else
-        res = ft_uitoa_base(HEXLO, unb);
+        buf = ft_uitoa_base(HEXLO, unb);
+    if (!buf)
+        return (NULL);
+    return (buf);
+}
+
+/*for test only*/
+int main()
+{
+    t_param f;
+    char    *out;
+
+    f.type = 'x';
+    f.dot = 0;
+    f.hash = 0;
+    f.precision = 0;
+    out = print_x(-123, &f);
+    printf("%s\n",out);
+    return (0);
 }
