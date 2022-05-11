@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/06 23:22:43 by user             ###   ########.fr       */
+/*   Updated: 2022/05/10 21:37:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char    *print_p(unsigned long int ptr);
 char    *print_x(unsigned int unb, t_param *f);
 char    *idput(char *buf, int len, int blen);
 char    *xput(char *buf, int len, int blen);
+char    *nostr_handle(int prc);
 char    putflag(t_param *f, int n);
 int         print_c(char c, t_param *f);
 #endif

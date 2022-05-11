@@ -6,15 +6,15 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:03:32 by user              #+#    #+#             */
-/*   Updated: 2022/05/06 23:12:06 by user             ###   ########.fr       */
+/*   Updated: 2022/05/10 21:41:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-/*for test only*/
-#include <stdio.h>
+/*for test only
+#include <stdio.h>*/
 
 static int  putc_left(char c, int width)
 {
@@ -65,7 +65,7 @@ int     print_c(char c, t_param *f)
     return (i);
 }
 
-/*for test only*/
+/*for test only
 int main()
 {
     int         len;
@@ -78,4 +78,4 @@ int main()
     len = print_c(b, &f);
     printf("\n%d\n", len);
     return (0);
-}
+}*/

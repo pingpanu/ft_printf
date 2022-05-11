@@ -6,17 +6,18 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 21:38:07 by user              #+#    #+#             */
-/*   Updated: 2022/05/06 22:42:20 by user             ###   ########.fr       */
+/*   Updated: 2022/05/10 21:43:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "libft.h"
 #include "ft_printf.h"
 
-/*for test only*/
+/*for test only
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
+#include <stdlib.h>*/
+
 char    *ft_uitoa_base(const char *str, unsigned int n);
 
 char    *print_u(unsigned int nb, t_param *f)
@@ -29,7 +30,7 @@ char    *print_u(unsigned int nb, t_param *f)
     if (f->dot && f->precision == 0 && nb == 0)
         return ("");
     buf = ft_uitoa_base(DIGIT, nb);
-    blen = strlen(buf);
+    blen = ft_strlen(buf);
     if (f->precision <= blen)
         return (buf);
     if (f->precision > blen)
@@ -40,7 +41,7 @@ char    *print_u(unsigned int nb, t_param *f)
         return (NULL);
     return (out);
 }
-/*for test only*/
+/*for test only
 int main()
 {
     t_param f;
@@ -52,4 +53,4 @@ int main()
     out = print_u(250, &f);
     printf("%s\n",out);
     return (0);
-}
+}*/

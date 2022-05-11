@@ -6,17 +6,17 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 21:47:45 by user              #+#    #+#             */
-/*   Updated: 2022/05/06 23:26:42 by user             ###   ########.fr       */
+/*   Updated: 2022/05/10 21:44:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-/*for test only*/
+/*for test only
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
+#include <stdlib.h>*/
 
 static char *xlocap(char c, unsigned int unb);
 
@@ -32,7 +32,7 @@ char    *print_x(unsigned int unb, t_param *f)
     buf = xlocap(f->type, unb);
     if (!buf)
         return (NULL);
-    blen = strlen(buf);
+    blen = ft_strlen(buf);
     if (f->precision <= blen && !f->hash)
         return (buf);
     len = blen;
@@ -63,7 +63,7 @@ static char *xlocap(char c, unsigned int unb)
     return (buf);
 }
 
-/*for test only*/
+/*for test only
 int main()
 {
     t_param f;
@@ -76,4 +76,4 @@ int main()
     out = print_x(-123, &f);
     printf("%s\n",out);
     return (0);
-}
+}*/

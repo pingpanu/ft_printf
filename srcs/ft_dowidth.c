@@ -6,59 +6,86 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:32:51 by user              #+#    #+#             */
-/*   Updated: 2022/04/25 16:00:38 by user             ###   ########.fr       */
+/*   Updated: 2022/05/11 23:09:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-static char addright(int wdiff, char *str);
-static char addleft(int wdiff, char *str, t_param *f);
+/*for test only
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>*/
+
+static char *align_left(int width, char *str);
+static char *align_right(int width, char *str, t_param *f);
 
 char    *ft_dowidth(char *str, t_param *f)
 {
-    int     wdiff;
     char    *out;
 
-    wdiff = f->width - ft_strlen(str);
-    if (wdiff <= 0)
-        return (str);
-    else
+    if (!str)
+    {
+        out = nostr_handle(f->precision);
+        return (out);
+    }
+    if (f->width > (int)ft_strlen(str))
     {
         if (f->minus == 1)
-            out = addright(wdiff, *str);
+            out = align_left(f->width, str);
         else
-            out = addleft(wdiff, *str, f);
+            out = align_right(f->width, str, f);
+        if(!out)
+            return (NULL);
         free(str);
         return (out);
     }
+    return (str);
 }
 
-static char addright(int wdiff, char *str)
+static char *align_left(int width, char *str)
 {
     char    *rstr;
-    int     i;
+    int         i;
 
     i = 0;
-    rstr = ft_calloc(1,wdiff + 1);
-    while (i <= wdiff)
+    rstr = ft_calloc(1, width + 1);
+    if (!rstr)
+        return (NULL);
+    while (*str)
+        rstr[i++] = *str++;
+    while (rstr[i])
         rstr[i++] = ' ';
-    str = ft_strjoin(str, rstr);
-    free (rstr);
-    return (str);   
+    return (rstr);
 }
 
-static char addleft(int wdiff, char *str, t_param *f)
+static char *align_right(int width, char *str, t_param *f)
 {
     char    *rstr;
-    int     i;
+    int     slen;
 
-    i = 0;
-    rstr = ft_calloc(1,wdiff + 1);
-    while (i <= wdiff)
-        rstr[i++] = f->lead;
-    str = ft_strjoin(rstr, str);
-    free (rstr);
-    return (str);   
+    slen = ft_strlen(str);
+    rstr = ft_calloc(1, width + 1);
+    if (!rstr)
+        return (NULL);
+    while (slen >= 0)
+        rstr[width--] = str[slen--];
+    while (width >= 0)
+        rstr[width--] = f->lead;
+    return (rstr);
 }
+
+/*for test only
+int main()
+{
+    t_param f;
+    char    *out;
+
+    f.width = 10;
+    f.minus = 0;
+    f.lead = ' ';
+    out = ft_dowidth("0042", &f);
+    printf("%s\n", out);
+    return (0);
+}*/

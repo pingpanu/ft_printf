@@ -6,17 +6,18 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:23:50 by user              #+#    #+#             */
-/*   Updated: 2022/05/06 22:40:51 by user             ###   ########.fr       */
+/*   Updated: 2022/05/10 21:43:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "libft.h"
 #include "ft_printf.h"
 
-/*for test only*/
+/*for test only
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
+#include <stdlib.h>*/
+
 char    *ft_itoa(int n);
 
 char    *print_id(int nbr, t_param *f)
@@ -31,7 +32,7 @@ char    *print_id(int nbr, t_param *f)
     buf = ft_itoa(nbr);
     if (!buf)
         return (NULL);
-    blen = strlen(buf);
+    blen = ft_strlen(buf);
     if (f->precision <= blen && !f->space && !f->plus)
         return (buf);
     len = blen;
@@ -49,7 +50,7 @@ char    *print_id(int nbr, t_param *f)
     return(NULL);
 }
 
-/*for test only*/
+/*for test only
 int main()
 {
     t_param f;
@@ -63,4 +64,4 @@ int main()
     out = print_id(0, &f);
     printf("%s\n",out);
     return (0);
-}
+}*/

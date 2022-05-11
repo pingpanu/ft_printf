@@ -6,14 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:01:48 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/06 23:01:58 by user             ###   ########.fr       */
+/*   Updated: 2022/05/11 23:11:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-static int	ft_putall(t_param *f, va_list ap);
+static int	printstr(const char *str);
 
 int	ft_printf(const char *format, ...)
 {
@@ -59,8 +59,24 @@ static int ft_putall(t_param *f, va_list ap)
 		return (len);
 	}
     out = ft_putspecs(f, ap);
-	out = ft_dowidth(out, f); //do both width and precision
+	out = ft_dowidth(out, f);
 	len = printstr(out);
 	free(out);
     return (len);
+}
+
+static int	printstr(const char *str)
+{
+	int	len;
+
+	if (!str)
+		return (0);
+	len = 0;
+	while (*str)
+	{
+		write(1, *str, 1);
+		str++;
+		len++;
+	}
+	return (len);
 }

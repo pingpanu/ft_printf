@@ -6,17 +6,18 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 21:45:05 by user              #+#    #+#             */
-/*   Updated: 2022/05/06 23:26:30 by user             ###   ########.fr       */
+/*   Updated: 2022/05/11 22:50:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+//#include "libft.h"
 #include "ft_printf.h"
 
 /*for test only*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 char    *idput(char *buf, int len, int blen)
 {
@@ -26,7 +27,7 @@ char    *idput(char *buf, int len, int blen)
     if (!out)
         return (NULL);
     len -= 1;
-    while (blen >= 0 && ft_isdigit(buf[blen]))
+    while (blen >= 0 && isdigit(buf[blen]))
             out[len--] = buf[blen--];
     while (len >= 0)
         out[len--] = '0';
@@ -68,4 +69,18 @@ char *xput(char *buf, int len, int blen)
     while (len >= 0)
         out[len--] = '0';
     return (out);
+}
+
+char *nostr_handle(int prc)
+{
+    char *buf;
+
+    if (IS_LINUX && prc < 6)
+    {
+        buf = calloc(1, 1);
+        return (buf);
+    }
+    buf = calloc(1, (S_EMPTY_L + 1));
+    memcpy(buf, S_EMPTY, S_EMPTY_L);
+    return (buf);
 }

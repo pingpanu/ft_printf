@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:06:27 by user              #+#    #+#             */
-/*   Updated: 2022/05/05 13:17:25 by user             ###   ########.fr       */
+/*   Updated: 2022/05/10 21:41:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>*/
-
-static char *nostr_handle(int prc);
 
 char    *print_s(char *str, t_param *f)
 {
@@ -42,20 +40,6 @@ char    *print_s(char *str, t_param *f)
         return (NULL);
     ft_memcpy(out, str, len);
     return (out);
-}
-
-static char *nostr_handle(int prc)
-{
-    char *buf;
-
-    if (IS_LINUX && prc < 6)
-    {
-        buf = ft_calloc(1, 1);
-        return (buf);
-    }
-    buf = ft_calloc(1, (S_EMPTY_L + 1));
-    ft_memcpy(buf, S_EMPTY, S_EMPTY_L);
-    return (buf);
 }
 
 /*for test only
