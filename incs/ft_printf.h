@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/12 21:43:26 by user             ###   ########.fr       */
+/*   Updated: 2022/05/13 15:07:35 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdarg.h>
+# include "libft.h"
 /*predefied constants*/
 # define SPECS  "cspdiuxX%"
 # define DIGIT  "0123456789"

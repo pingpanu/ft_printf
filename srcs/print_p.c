@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 23:04:34 by user              #+#    #+#             */
-/*   Updated: 2022/05/12 21:04:50 by user             ###   ########.fr       */
+/*   Created: 2022/05/13 15:06:34 by pingpanu          #+#    #+#             */
+/*   Updated: 2022/05/13 15:39:28 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
+#include "libft.h"
 #include "ft_printf.h"
 
 /*for test only
@@ -31,7 +31,7 @@ static unsigned int    ulilen(size_t base, unsigned long int nbr)
     return (len);
 }
 
-const char    *ft_ulitoa(unsigned long int ptr)
+static char    *ft_ulitoa(unsigned long int ptr)
 {
     unsigned int    ilen;
     size_t          base;
@@ -43,7 +43,7 @@ const char    *ft_ulitoa(unsigned long int ptr)
         num[0] = '0';
         return (num);
     }
-    ilen = ft_ulilen(16, ptr);
+    ilen = ulilen(16, ptr);
     num = ft_calloc(1, ilen + 1);
     if (!num)
         return (NULL);
