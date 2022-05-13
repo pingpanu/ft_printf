@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:01:48 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/11 23:11:09 by user             ###   ########.fr       */
+/*   Updated: 2022/05/13 14:40:18 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 static int	printstr(const char *str);
+
+static int	ft_putall(t_param *f, va_list ap);
 
 int	ft_printf(const char *format, ...)
 {
@@ -74,8 +76,7 @@ static int	printstr(const char *str)
 	len = 0;
 	while (*str)
 	{
-		write(1, *str, 1);
-		str++;
+		ft_putchar_fd(*str++, 1);
 		len++;
 	}
 	return (len);

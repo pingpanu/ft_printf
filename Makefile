@@ -3,36 +3,42 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
+#    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/05/12 22:14:53 by user             ###   ########.fr        #
+#    Updated: 2022/05/13 15:01:34 by pingpanu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+#defind names
 NAME = libftprintf.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -f
 
+#color
+GREEN = '\033[0;32m'
+YELLOW = '\033[0;33m'
+WHITE = '\033[0;37'
+BLUE = '\033[0;34'
 
+#source files locales
+SRC = srcs/ft_printf.c \
+	  srcs/get_params.c \
+	  srcs/ft_putspecs.c \
+	  srcs/ft_dowidth.c \
+	  srcs/print_c.c \
+	  srcs/print_id.c \
+	  srcs/print_p.c \
+	  srcs/print_s.c \
+	  srcs/print_u.c \
+	  srcs/print_x.c \
+	  srcs/print_utils.c\
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 INC = ./incs
 
-BUILD_DIR = build
-SRC = ft_printf.c \
-	  get_params.c \
-	  ft_putspecs.c \
-	  ft_dowidth.c \
-	  utils/print_c.c \
-	  utils/print_id.c \
-	  utils/print_p.c \
-	  utils/print_s.c \
-	  utils/print_u.c \
-	  utils/print_x.c \
-	  utils/print_utils.c\
-
+#operations
 OBJS = $(.c=$(BUILD_DIR)/%.o)
 
 all: $(NAME)
@@ -45,7 +51,7 @@ $(NAME): $(OBJS) $(LIBFT)
 $(OBJS) :$(BUILD_DIR)/%.o:$%.c
 		 @mkdir -p $(@D)
 		 @echo "Compiling $<"
-		 @$(CC) $(FLAGS) -I $(INC) -I $(LIBFT_DIR) -c $< -o $@
+		 @$(CC) $(FLAGS) -I $(INC) -I $(SRC) -c $< -o $@
 
 $(LIBFT) :
 		 make -C $(LIBFT_DIR)
@@ -67,8 +73,8 @@ rebonus: fclean bonus
 
 test: re
 	@$(CC) -o khaoniao.out main.c -L . libftprintf.a -I $(INC) 
-	@echo "\033[0;31m=== Credit TSOMSA (viruskizz github) Thanks ===\033[0m"
-	@echo "\033[0;32m=== KHAONIAO ===\033[0m"
+	@echo "$(GREEN)=== Credit TSOMSA (viruskizz github) Thanks ===$(DEF_GREEN)"
+	@echo "$(BLUE)=== KHAONIAO ===$(DEF_BLUE)"
 	@./khaoniao.out-I $(INC)
 
 testmem: re
