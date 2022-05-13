@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 23:04:34 by user              #+#    #+#             */
-/*   Updated: 2022/05/10 21:42:56 by user             ###   ########.fr       */
+/*   Updated: 2022/05/12 21:04:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,43 @@
 #include <string.h>
 #include <stdlib.h>*/
 
-char    *ft_uitoa_base(const char *str, unsigned int n);
+static unsigned int    ulilen(size_t base, unsigned long int nbr)
+{
+    unsigned int  len;
+
+    len = 0;
+    while (nbr != 0)
+    {
+        nbr = nbr / base;
+        len++;
+    }
+    return (len);
+}
+
+const char    *ft_ulitoa(unsigned long int ptr)
+{
+    unsigned int    ilen;
+    size_t          base;
+    char    *num;
+
+    if(ptr == 0)
+    {
+        num = ft_calloc(1, 2);
+        num[0] = '0';
+        return (num);
+    }
+    ilen = ft_ulilen(16, ptr);
+    num = ft_calloc(1, ilen + 1);
+    if (!num)
+        return (NULL);
+    ilen -= 1;
+    while (ptr > 0)
+    {
+        num[ilen--] = HEXLO[ptr % 16];
+        ptr /= 16;
+    }
+    return (num);
+}
 
 char    *print_p(unsigned long int ptr)
 {
@@ -27,7 +63,7 @@ char    *print_p(unsigned long int ptr)
     int         len;
     int         blen;
 
-    buf = ft_uitoa_base(HEXLO, ptr);
+    buf = ft_ulitoa(ptr);
     if (!buf)
         return (NULL);
     blen = ft_strlen(buf);

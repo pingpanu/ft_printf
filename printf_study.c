@@ -29,10 +29,10 @@ int main()
     printf("----------printf with i characters----------\n");
     printf("1) %s %.i\n", "%.i", 0);
     printf("2) %s %3.4i\n", "%3.4i", -20);
-    printf("3) %s %04i\n", "%04i", 20);
-    printf("4) %s %03i\n", "%03i", -20);
+    printf("3) %s %04i\n", "%04i", -20);
+    printf("4) %s %4i\n", "%4i", -20);
     printf("5) %s %+.3i\n", "%+.3i", 20);
-    printf("6) %s %-3i\n", "%-3i", -20);
+    printf("6) %s %-6i\n", "%-6i", -20);
     printf("----------printf with u characters----------\n");
     printf("1) %s %.u\n", "%.u", 0);
     printf("2) %s %5.2u\n", "%5.2u", 20);
@@ -46,7 +46,7 @@ int main()
     /*printf("3) %s % 6x\n", "% 6c", 123); x cant  have space flag*/
     printf("4) %s %#x\n", "%#x", -123);
     printf("5) %s %#6.4x\n", "%#6.4x", 123);
-    printf("6) %s %#6.4X\n", "%#6.4X", 123);
+    printf("6) %s %06X\n", "%06X", 123);
     /*printf("6) %s %+6x\n", "%+6c", 123); x cant have plus or minus flag*/
     printf("----------printf with p characters----------\n");
     printf("1) %s %3p\n", "%3p", b);

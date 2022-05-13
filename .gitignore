@@ -1,5 +1,6 @@
 a.out
 printf_study.c
+main.c
 Othello42-ft_printf-tester/
 ft_printf_tester/
 *.a

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/10 21:37:09 by user             ###   ########.fr       */
+/*   Updated: 2022/05/12 21:43:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_param get_params(const char *fmt, t_param *f, int *i);
 char    *ft_putspecs(t_param *f, va_list ap);
 char    *ft_dowidth(char *str, t_param *f);
 /*function to print va_arg*/
+int         print_c(char c, t_param *f);
 char    *print_s(char *str, t_param *f);
 char    *print_id(int nbr, t_param *f);
 char    *print_u(unsigned int nb, t_param *f);
@@ -65,5 +66,4 @@ char    *idput(char *buf, int len, int blen);
 char    *xput(char *buf, int len, int blen);
 char    *nostr_handle(int prc);
 char    putflag(t_param *f, int n);
-int         print_c(char c, t_param *f);
 #endif
