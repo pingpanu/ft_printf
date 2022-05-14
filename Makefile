@@ -3,82 +3,93 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/05/13 15:58:46 by pingpanu         ###   ########.fr        #
+#    Updated: 2022/05/14 23:31:38 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#defind names
+#variables
 NAME = libftprintf.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-RM = /bin/rm -f
+BDIR = build/
+SDIR = srcs/
+LIB = libft
+INC = incs
 
 #color
 DEFCOLOR = '\033[0m'
 GREEN = '\033[0;32m'
 YELLOW = '\033[0;33m'
-WHITE = '\033[0;37'
 BLUE = '\033[0;34'
+WHITE = '\033[0;37'
 
-#source files locales
-SRC = srcs/ft_printf.c \
-	  srcs/get_params.c \
-	  srcs/ft_putspecs.c \
-	  srcs/ft_dowidth.c \
-	  srcs/print_c.c \
-	  srcs/print_id.c \
-	  srcs/print_p.c \
-	  srcs/print_s.c \
-	  srcs/print_u.c \
-	  srcs/print_x.c \
-	  srcs/print_utils.c\
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
-INC = ./incs
+#sources
+SRC_NAME = ft_printf.c \
+	  	   get_params.c \
+	  	   ft_putspecs.c \
+	  	   ft_dowidth.c \
+	  	   utils/print_c.c \
+	  	   utils/print_id.c \
+	  	   utils/print_p.c \
+	  	   utils/print_s.c \
+	  	   utils/print_u.c \
+	  	   utils/print_x.c \
+	  	   utils/print_utils.c\
+
+SRCS = $(addprefix $(SDIR), $(SRC_NAME))
+OBJS = $(addprefix $(BDIR), $(SRC_NAME:.c=.o))
+OBJF = .cache_exist
 
 #operations
 #1. Run makefile in libft to get libft.a
 #2. mkdir build
 #3. compile .c files in srcs to .o and put them to build
 #4. compile all files in build
-OBJS = $(.c=$(BUILD_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		 @make -C $(LIBFT)
-		 @
+		 @ make -C $(LIB)
+		 @ cp $(LIB)/libft.a $(NAME)
+		 @ echo "$(YELLOW)Compile srcs files to libftprintf$(DEFCOLOR)"
+		 @ ar rcs $(NAME) $(OBJS)
+		 @ echo "$(GREEN)Done!$(DEFCOLOR)"
 
-$(OBJS) :$(BUILD_DIR)/%.o:$%.c
-		 @mkdir -p $(@D)
-		 @echo "Compiling $<"
-		 @$(CC) $(FLAGS) -I $(INC) -I $(SRC) -c $< -o $@
+$(BDIR)%.o: $(SDIR)%.c | $(OBJF)
+		 @ echo "$(YELLOW)Compiling: $< $(DEFCOLOR)"
+		 @ $(CC) $(FLAGS) -c $(SRCS) -o $(OBJS) -I $(INC) -I $(LIB)
 
-$(LIBFT) :
-		 make -C $(LIBFT_DIR)
-		 cp $(LIBFT) $(NAME)
+$(OBJF):
+		 @ mkdir -p $(BDIR)
+		 @ mkdir -p $(BDIR)/utils
 
 bonus: all
 
 clean:
-	   make clean -C $(LIBFT_DIR)
-	   $(RM) -r $(BUILD_DIR)
+		 @ rm -rf $(BDIR)
+		 @ make clean -C $(LDIR)
+		 @ echo "$(BLUE)Object files removed$(DEFCOLOR)"
 
 fclean: clean
-	   make fclean -C $(LIBFT_DIR)
-	   $(RM) $(NAME)
+		 @ rm -f $(NAME)
+		 @ make fclean -C $(LDIR)
+		 @ echo "$(BLUE)All libraries removed$(DEFCOLOR)"
 
 re: fclean all
+		 @ echo "$(GREEN)Ft_printf succesfully rebuilded$(DEFCOLOR)"
 
 rebonus: fclean bonus
 
+norm:
+		 @ norminette $(SRCS) $(INC) $(LIB) | grep -v Norme -B1 || true
+
 test: re
 	@$(CC) -o khaoniao.out main.c -L . libftprintf.a -I $(INC) 
-	@echo "$(GREEN)=== Credit TSOMSA (viruskizz github) Thanks ===$(DEF_GREEN)"
-	@echo "$(BLUE)=== KHAONIAO ===$(DEF_BLUE)"
+	@echo "$(GREEN)=== Credit TSOMSA (viruskizz github) Thanks ===$(DEFCOLOR)"
+	@echo "$(BLUE)=== KHAONIAO ===$(DEFCOLOR)"
 	@./khaoniao.out-I $(INC)
 
 testmem: re
