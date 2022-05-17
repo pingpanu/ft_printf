@@ -6,7 +6,7 @@
 #    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/05/14 23:31:38 by user             ###   ########.fr        #
+#    Updated: 2022/05/17 22:30:32 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ WHITE = '\033[0;37'
 SRC_NAME = ft_printf.c \
 	  	   get_params.c \
 	  	   ft_putspecs.c \
-	  	   ft_dowidth.c \
+		   ft_dowidth.c \
 	  	   utils/print_c.c \
 	  	   utils/print_id.c \
 	  	   utils/print_p.c \
@@ -60,7 +60,7 @@ $(NAME): $(OBJS)
 
 $(BDIR)%.o: $(SDIR)%.c | $(OBJF)
 		 @ echo "$(YELLOW)Compiling: $< $(DEFCOLOR)"
-		 @ $(CC) $(FLAGS) -c $(SRCS) -o $(OBJS) -I $(INC) -I $(LIB)
+		 @ $(CC) $(FLAGS) -c $< -o $@ -I $(INC) -I $(LIB)
 
 $(OBJF):
 		 @ mkdir -p $(BDIR)
@@ -70,12 +70,12 @@ bonus: all
 
 clean:
 		 @ rm -rf $(BDIR)
-		 @ make clean -C $(LDIR)
+		 @ make clean -C $(LIB)
 		 @ echo "$(BLUE)Object files removed$(DEFCOLOR)"
 
 fclean: clean
 		 @ rm -f $(NAME)
-		 @ make fclean -C $(LDIR)
+		 @ make fclean -C $(LIB)
 		 @ echo "$(BLUE)All libraries removed$(DEFCOLOR)"
 
 re: fclean all
