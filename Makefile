@@ -6,7 +6,7 @@
 #    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/05/18 16:36:33 by pingpanu         ###   ########.fr        #
+#    Updated: 2022/05/18 16:40:09 by pingpanu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,12 +87,12 @@ norm:
 		 @ norminette $(SRCS) $(INC) $(LIB) | grep -v Norme -B1 || true
 
 test: re
-	@$(CC) $(FLAGS) -o khaoniao $(NAME) main.c 
+	@$(CC) $(FLAGS) -o khaoniao.out $(NAME) main.c 
 	@echo "$(GREEN)=== Credit TSOMSA (viruskizz github) Thanks ===$(DEFCOLOR)"
 	@echo "$(BLUE)=== KHAONIAO ===$(DEFCOLOR)"
 
 testmem: re
-	@$(CC) $(FLAGS) -o khaoniao $(NAME) main.c
+	@$(CC) $(FLAGS) -o khaoniao.out $(NAME) main.c
 	@echo "$(BLUE)=== KHAONIAO ===$(DEFCOLOR)"
 	@valgrind -q --leak-check=full --track-origins=yes ./khaoniao.out
 
