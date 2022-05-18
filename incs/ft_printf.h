@@ -6,7 +6,7 @@
 /*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/18 15:32:33 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:10:56 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include "libft.h"
 /*predefied constants*/
 # define SPECS  "cspdiuxX%"
 # define DIGIT  "0123456789"
