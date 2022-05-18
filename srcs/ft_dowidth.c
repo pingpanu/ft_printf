@@ -6,15 +6,15 @@
 /*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:23:27 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/18 16:03:59 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:33:54 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-/*for test only*/
-#include <stdio.h>
+/*for test only
+#include <stdio.h>*/
 
 static void	changestr(char *out, char *str);
 static char	*align_left(char *str, int width);
@@ -87,7 +87,7 @@ static void	changestr(char *out, char *str)
     }
 }
 
-/*for test only*/
+/*for test only
 int main()
 {
     char *result;
@@ -100,4 +100,4 @@ int main()
     result = ft_dowidth("To the moon", &f);
     printf("%s\n", result);
     return (0);
-}
+}*/

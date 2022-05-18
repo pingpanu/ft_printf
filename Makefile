@@ -6,7 +6,7 @@
 #    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/05/18 16:15:44 by pingpanu         ###   ########.fr        #
+#    Updated: 2022/05/18 16:36:33 by pingpanu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INC = incs
 DEFCOLOR = '\033[0m'
 GREEN = '\033[0;32m'
 YELLOW = '\033[0;33m'
-BLUE = '\033[0;34'
+BLUE = '\033[0;34m'
 WHITE = '\033[0;37'
 
 #sources
@@ -87,14 +87,13 @@ norm:
 		 @ norminette $(SRCS) $(INC) $(LIB) | grep -v Norme -B1 || true
 
 test: re
-	@$(CC) $(FLAGS) main.c -L . -I $(INC) -I $(LIB) -o khaoniao.out 
+	@$(CC) $(FLAGS) -o khaoniao $(NAME) main.c 
 	@echo "$(GREEN)=== Credit TSOMSA (viruskizz github) Thanks ===$(DEFCOLOR)"
 	@echo "$(BLUE)=== KHAONIAO ===$(DEFCOLOR)"
-	@./khaoniao.out-I $(INC)
 
 testmem: re
-	@$(CC) $(FLAGS) main.c -L . -I $(INC) -I $(LIB) -o khaoniao.out
-	@echo "\033[0;032=== KHAONIAO ===\033[0m"
+	@$(CC) $(FLAGS) -o khaoniao $(NAME) main.c
+	@echo "$(BLUE)=== KHAONIAO ===$(DEFCOLOR)"
 	@valgrind -q --leak-check=full --track-origins=yes ./khaoniao.out
 
 .PHONY: all clean fclean re
