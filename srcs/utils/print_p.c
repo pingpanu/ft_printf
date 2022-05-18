@@ -6,7 +6,7 @@
 /*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:34 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/13 15:39:28 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:06:48 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static unsigned int    ulilen(size_t base, unsigned long int nbr)
 static char    *ft_ulitoa(unsigned long int ptr)
 {
     unsigned int    ilen;
-    size_t          base;
     char    *num;
 
     if(ptr == 0)
