@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
+#    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 16:20:11 by user              #+#    #+#              #
-#    Updated: 2022/05/12 21:34:37 by user             ###   ########.fr        #
+#    Updated: 2022/05/13 16:14:57 by pingpanu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ $(NAME): $(OBJ)
 .PHONY: all bonus clean fclean re
 
 clean:
-	rm -f $(OBJ) $(OBJ_BONUS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

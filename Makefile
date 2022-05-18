@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
+#    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/05/17 22:30:32 by user             ###   ########.fr        #
+#    Updated: 2022/05/18 15:49:26 by pingpanu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,13 +87,13 @@ norm:
 		 @ norminette $(SRCS) $(INC) $(LIB) | grep -v Norme -B1 || true
 
 test: re
-	@$(CC) -o khaoniao.out main.c -L . libftprintf.a -I $(INC) 
+	@$(CC) $(FLAGS) main.c -L . -I $(INC) -o khaoniao.out 
 	@echo "$(GREEN)=== Credit TSOMSA (viruskizz github) Thanks ===$(DEFCOLOR)"
 	@echo "$(BLUE)=== KHAONIAO ===$(DEFCOLOR)"
 	@./khaoniao.out-I $(INC)
 
 testmem: re
-	@$(CC) main.c -lftprintf -L . -I $(INC) -o khaoniao.out
+	@$(CC) $(FLAGS) main.c -L . -I $(INC) -o khaoniao.out
 	@echo "\033[0;032=== KHAONIAO ===\033[0m"
 	@valgrind -q --leak-check=full --track-origins=yes ./khaoniao.out
 
