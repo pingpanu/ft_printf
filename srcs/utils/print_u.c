@@ -6,7 +6,7 @@
 /*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:08:06 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/13 15:08:08 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:09:07 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char    *print_u(unsigned int nb, t_param *f)
         return ("");
     buf = ft_uitoa_base(DIGIT, nb);
     blen = ft_strlen(buf);
+    len = 0;
     if (f->precision <= blen)
         return (buf);
     if (f->precision > blen)
