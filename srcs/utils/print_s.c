@@ -6,16 +6,14 @@
 /*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:07:57 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/13 15:08:00 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:02:02 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 /*for test only
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>*/
+#include <stdio.h>*/
 
 char    *print_s(char *str, t_param *f)
 {
@@ -46,12 +44,12 @@ char    *print_s(char *str, t_param *f)
 int main()
 {
     t_param f;
-    char        str[14] = "Vous avez peri";
+    char        str[18] = "lord of the misery";
     char        *out;
 
     f.dot = 1;
     f.precision = 10;
-    out = print_s('\0', &f);
+    out = print_s(str, &f);
     printf("%s\n",out);
     return (0);
 }*/

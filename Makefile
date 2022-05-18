@@ -6,7 +6,7 @@
 #    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/05/18 16:40:09 by pingpanu         ###   ########.fr        #
+#    Updated: 2022/05/18 21:32:39 by pingpanu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ WHITE = '\033[0;37'
 #sources
 SRC_NAME = ft_printf.c \
 	  	   get_params.c \
-	  	   ft_putspecs.c \
+		   ft_putspecs.c \
+	  	   ft_putall.c \
 		   ft_dowidth.c \
 	  	   utils/print_c.c \
 	  	   utils/print_id.c \
