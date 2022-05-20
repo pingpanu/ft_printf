@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/18 21:33:24 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/20 13:04:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,20 @@ typedef struct s_param
 
 /*function in main prinf*/
 int		    ft_printf(const char *format, ...);
-int         ft_putall(t_param *f, va_list ap);
-char    *ft_putspecs(t_param *f, va_list ap);
-char    *ft_dowidth(char *str, t_param *f);
-t_param get_params(const char *fmt, t_param *f, int *i);
-/*function to print va_arg*/
-int         print_c(char c, t_param *f);
-char    *print_s(char *str, t_param *f);
-char    *print_id(int nbr, t_param *f);
-char    *print_u(unsigned int nb, t_param *f);
-char    *print_p(unsigned long int ptr);
-char    *print_x(unsigned int unb, t_param *f);
+int         ft_putall(t_param f, va_list ap);
+t_param get_params(const char *fmt, t_param f, int *i);
+/*utilities files*/
+int         printstr(const char *str);
 char    *idput(char *buf, int len, int blen);
 char    *xput(char *buf, int len, int blen);
 char    *nostr_handle(int prc);
+char    *ft_dowidth(char *str, t_param *f);
 char    putflag(t_param *f, int n);
+/*function to print va_arg*/
+int         print_c(char c, t_param f);
+int         print_s(char *str, t_param f);
+int         print_id(int nbr, t_param f);
+int         print_u(unsigned int nb, t_param f);
+int         print_p(unsigned long int ptr);
+int         print_x(unsigned int unb, t_param f);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:05:02 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/18 21:32:38 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/19 22:51:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i += 1;
-			f = get_params(format, &f, &i);
-			done += ft_putall(&f, arg);
+			f = get_params(format, f, &i);
+			done += ft_putall(f, arg);
 		}
 		else
 		{

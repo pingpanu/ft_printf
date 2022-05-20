@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_params.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:05:51 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/18 21:32:34 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/19 23:35:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 /*for test only
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>*/
+#include <stdio.h>*/
 
 void    reset_param(t_param *f)
 {
@@ -30,30 +28,30 @@ void    reset_param(t_param *f)
     f-> type = 0;
 }
 
-t_param get_params(const char *fmt, t_param *f, int *i)
+t_param get_params(const char *fmt, t_param f, int *i)
 {
-    reset_param(f);
-    while(f->type == 0)
+    reset_param(&f);
+    while(f.type == 0)
     {
         if (fmt[*i] == '-')
-            f->minus = 1;
+            f.minus = 1;
         if (fmt[*i] == '+')
-            f->plus = 1;
+            f.plus = 1;
         if (fmt[*i] == ' ')
-            f->space = 1;
-        if (f->width == 0 && f->dot == 0 && fmt[*i] == '0')
-            f->lead = '0';
+            f.space = 1;
+        if (f.width == 0 && f.dot == 0 && fmt[*i] == '0')
+            f.lead = '0';
         if (fmt[*i] == '.')
-            f->dot = 1;
-        if (f->dot == 0 && ft_isdigit(fmt[*i]))
-            f->width = (f->width * 10) + (fmt[*i] - '0');
-        if (f->dot == 1 && ft_isdigit(fmt[*i]))
-            f->precision = (f->precision * 10) + (fmt[*i] - '0');
+            f.dot = 1;
+        if (f.dot == 0 && ft_isdigit(fmt[*i]))
+            f.width = (f.width * 10) + (fmt[*i] - '0');
+        if (f.dot == 1 && ft_isdigit(fmt[*i]))
+            f.precision = (f.precision * 10) + (fmt[*i] - '0');
         if (ft_exist(SPECS, fmt[*i]))
-            f->type = fmt[*i];
+            f.type = fmt[*i];
         (*i)++;
     }
-    return (*f);
+    return (f);
 }
 
 /*for test only
@@ -65,7 +63,7 @@ int main (int argc, char **argv)
     if (argc != 3)
         return (0);
     i = atoi(argv[2]);
-    f = get_params(argv[1], &f, &i);
+    f = get_params(argv[1], f, &i);
     printf("f.minus = %i\n", f.minus);
     printf("f.plus = %i\n", f.plus);
     printf("f.space = %i\n", f.space);

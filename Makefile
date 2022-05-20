@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/05/18 21:32:39 by pingpanu         ###   ########.fr        #
+#    Updated: 2022/05/19 23:31:46 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,20 +24,19 @@ DEFCOLOR = '\033[0m'
 GREEN = '\033[0;32m'
 YELLOW = '\033[0;33m'
 BLUE = '\033[0;34m'
-WHITE = '\033[0;37'
+WHITE = '\033[0;37m'
 
 #sources
 SRC_NAME = ft_printf.c \
 	  	   get_params.c \
-		   ft_putspecs.c \
 	  	   ft_putall.c \
-		   ft_dowidth.c \
-	  	   utils/print_c.c \
-	  	   utils/print_id.c \
-	  	   utils/print_p.c \
-	  	   utils/print_s.c \
-	  	   utils/print_u.c \
-	  	   utils/print_x.c \
+		   utils/ft_dowidth.c \
+	  	   print_c.c \
+	  	   print_id.c \
+	  	   print_p.c \
+	  	   print_s.c \
+	  	   print_u.c \
+	  	   print_x.c \
 	  	   utils/print_utils.c\
 
 SRCS = $(addprefix $(SDIR), $(SRC_NAME))
@@ -88,12 +87,12 @@ norm:
 		 @ norminette $(SRCS) $(INC) $(LIB) | grep -v Norme -B1 || true
 
 test: re
-	@$(CC) $(FLAGS) -o khaoniao.out $(NAME) main.c 
+	@$(CC) $(FLAGS) -o khaoniao.out -L . lftprintf main.c 
 	@echo "$(GREEN)=== Credit TSOMSA (viruskizz github) Thanks ===$(DEFCOLOR)"
 	@echo "$(BLUE)=== KHAONIAO ===$(DEFCOLOR)"
 
 testmem: re
-	@$(CC) $(FLAGS) -o khaoniao.out $(NAME) main.c
+	@$(CC) $(FLAGS) -o khaoniao.out -L . -lftprintf main.c
 	@echo "$(BLUE)=== KHAONIAO ===$(DEFCOLOR)"
 	@valgrind -q --leak-check=full --track-origins=yes ./khaoniao.out
 

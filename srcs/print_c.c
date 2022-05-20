@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:04 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/13 15:06:08 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/19 23:36:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,19 @@ static int  putc_right(char c, int width)
     return (i);
 }
 
-int     print_c(char c, t_param *f)
+int     print_c(char c, t_param f)
 {
     int    i;
 
-    if (f->width == 0 || f->type == '%')
+    if (f.width == 0 || f.type == '%')
     {
         ft_putchar_fd(c, 1);
         return (1);
     }
-    if (f->minus == 1)
-        i = putc_left(c, f->width);
+    if (f.minus == 1)
+        i = putc_left(c, f.width);
     else
-        i = putc_right(c, f->width);
+        i = putc_right(c, f.width);
     return (i);
 }
 

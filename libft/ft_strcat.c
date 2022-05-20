@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/26 01:00:08 by user              #+#    #+#             */
-/*   Updated: 2022/02/26 14:12:15 by pingpanu         ###   ########.fr       */
+/*   Created: 2022/05/20 14:41:57 by user              #+#    #+#             */
+/*   Updated: 2022/05/20 14:52:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void    ft_strcat(char *dst, const char *src)
 {
-	if (fd >= 0)
-	{
-		while (*s)
-		{
-			write(fd, s, 1);
-			s++;
-		}
-	}
+    int     i;
+    int     offset;
+
+    i = 0;
+    offset = ft_strlen(dst);
+    while (src[i] && dst[offset + i])
+    {
+        dst[offset + i] = src[i];
+        i++;
+    }
 }

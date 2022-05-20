@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 16:20:11 by user              #+#    #+#              #
-#    Updated: 2022/05/18 21:03:40 by pingpanu         ###   ########.fr        #
+#    Updated: 2022/05/20 01:14:37 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,8 @@ SRC = ft_bzero.c \
 	  ft_itoa.c \
 	  ft_memcpy.c \
 	  ft_putchar_fd.c \
-	  ft_putstr_fd.c \
-	  ft_strdup.c \
 	  ft_strjoin.c \
 	  ft_strlen.c \
-	  ft_strnstr.c \
 	  ft_uitoa_base.c \
 
 OBJ = $(SRC:.c=.o)

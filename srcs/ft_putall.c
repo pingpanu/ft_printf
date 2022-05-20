@@ -3,45 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 20:45:30 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/18 21:40:26 by pingpanu         ###   ########.fr       */
+/*   Created: 2022/05/19 22:49:17 by user              #+#    #+#             */
+/*   Updated: 2022/05/19 22:52:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-static int	printstr(const char *str);
-
-int ft_putall(t_param *f, va_list ap)
+int ft_putall(t_param f, va_list ap)
 {
-    char    *out;
-    int         len;
+    int		len;
 	
-	if (f->type == 'c')
+	if (f.type == 'c')
 		len = print_c(va_arg(ap, int), f);
-	if (f->type == '%')
+	if (f.type == '%')
 		len = print_c('%', f);
-    out = ft_putspecs(f, ap);
-    out = ft_dowidth(out, f);
-    len = printstr(out);
-	free(out);
+	if (f.type == 'i' || f.type == 'd')
+        len = print_id(va_arg(ap, int), f);
+    if (f.type == 's')
+        len = print_s(va_arg(ap, char *), f);
+    if (f.type == 'p')
+        len = print_p(va_arg(ap, unsigned long int));
+    if (f.type == 'u')
+        len = print_u(va_arg(ap, int), f);
+    if (f.type == 'x' || f.type == 'X')
+        len = print_x(va_arg(ap, unsigned int), f);
+    else
+        return (0);
     return (len);
-}
-
-static int	printstr(const char *str)
-{
-	int	len;
-
-	if (!str)
-		return (0);
-	len = 0;
-	while (*str)
-	{
-		ft_putchar_fd(*str++, 1);
-		len++;
-	}
-	return (len);
 }

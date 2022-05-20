@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:08:21 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/13 15:08:26 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/20 14:38:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,14 @@ char    *idput(char *buf, int len, int blen)
     return (out);
 }
 
-char putflag(t_param *f, int n)
+char putflag(t_param)
 {
     if (f->type == 'i' || f->type == 'd')
     {
-        if (n >= 0 && (f->plus || f->space))
-        {
-            if (f->plus)
-                return ('+');
-            if (f->space)
-                return (' ');
-        }
-        if (n < 0)
-            return ('-');
+        if (f->plus && !f->space)
+            return ('+');
+        else
+            return (' ');
     }
     if (f->type == 'x' || f->type == 'X')
     {
@@ -83,4 +78,19 @@ char *nostr_handle(int prc)
     buf = ft_calloc(1, (S_EMPTY_L + 1));
     ft_memcpy(buf, S_EMPTY, S_EMPTY_L);
     return (buf);
+}
+
+int	printstr(const char *str)
+{
+	int	len;
+
+	if (!str)
+		return (0);
+	len = 0;
+	while (*str)
+	{
+		ft_putchar_fd(*str++, 1);
+		len++;
+	}
+	return (len);
 }
