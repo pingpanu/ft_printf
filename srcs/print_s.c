@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:07:57 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/20 14:20:19 by user             ###   ########.fr       */
+/*   Updated: 2022/05/21 21:53:50 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,61 @@
 /*for test only*/
 #include <stdio.h>
 
-static int  s_cut(int precision, char *str);
+static int  s_flag(t_param f, char *str);
+static int  s_cut(t_param f, char *str);
 static int  s_expand(t_param f, char *str);
 static int  s_cande(t_param f, char *str);
 int     print_s(char *str, t_param f)
 {
-    int         len;
-    
+    f.len = ft_strlen(str);
     if (!str || (f.dot && f.precision == 0))
-        len = printstr(nostr_handle(f.precision));
-    if (f.dot && f.precision < (int)ft_strlen(str))
-    {
-        if (f.width > f.precision)
-            len = s_cande(f, str);
-        else
-            len = s_cut(f.precision, str);
-    }
-    else if (f.width > (int)ft_strlen(str))
-        len = s_expand(f, str);
+        f.len = printstr(nostr_handle(f.precision));
+    else if (f.space)
+        f.len = s_flag(f, str);
+    else if (f.precision < f.len)
+        f.len = s_cut(f, str);
+    else if (f.width > f.len)
+        f.len = s_expand(f, str);
     else
-        len = printstr(str);
-    return (len);
+        f.len = printstr(str);
+    return (f.len);
 }
 
-static int  s_cut(int precision, char *str)
+static int  s_flag(t_param f, char *str)
+{
+    char    *flag;
+    
+    if (f.precision < (int)ft_strlen(str))
+    {
+        flag = strcut(f.precision, str);
+        flag = ft_doflag(flag, &f);
+        if (f.width > (int)ft_strlen(flag))
+            flag = ft_dowidth(flag, &f);
+        f.len = printstr(flag);
+    }
+    else if (f.width > (int)ft_strlen(str) + 1)
+    {
+        flag = ft_dowidth(str, &f);
+        f.len = printstr(flag);
+    }
+    else
+    {
+        flag = ft_doflag(str, &f);
+        f.len = printstr(flag);
+    }
+    free(flag);
+    return (f.len);
+} 
+
+static int  s_cut(t_param f, char *str)
 {
     int         len;
     char    *cut;
 
-    cut = ft_calloc(1, (precision + 1));
+    cut = ft_calloc(1, (f.precision + 1));
     if (!cut)
         return (0);
-    ft_memcpy(cut, str, precision);
+    ft_memcpy(cut, str, f.precision);
     len = printstr(cut);
     free(cut);
     return (len);
@@ -84,7 +107,7 @@ static int  s_cande(t_param f, char *str)
     return (len);
 }
 
-/*for test only
+/*for test only*/
 int main()
 {
     t_param f;
@@ -94,8 +117,9 @@ int main()
     f.precision = 10;
     f.width = 15;
     f.lead = ' ';
+    f.space = 0;
     len = print_s("winterfell", f);
     printf("\n");
     printf("%d\n",len);
     return (0);
-}*/
+}

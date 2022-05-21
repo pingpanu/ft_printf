@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:41:57 by user              #+#    #+#             */
-/*   Updated: 2022/05/20 14:52:24 by user             ###   ########.fr       */
+/*   Updated: 2022/05/21 20:29:03 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-void    ft_strcat(char *dst, const char *src)
+char    *ft_strcat(char *dst, const char *src)
 {
     int     i;
     int     offset;
@@ -23,4 +24,5 @@ void    ft_strcat(char *dst, const char *src)
         dst[offset + i] = src[i];
         i++;
     }
+    return (dst);
 }

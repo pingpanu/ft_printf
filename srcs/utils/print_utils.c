@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:08:21 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/20 14:38:15 by user             ###   ########.fr       */
+/*   Updated: 2022/05/21 21:24:37 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,6 @@ char    *idput(char *buf, int len, int blen)
     while (len >= 0)
         out[len--] = '0';
     return (out);
-}
-
-char putflag(t_param)
-{
-    if (f->type == 'i' || f->type == 'd')
-    {
-        if (f->plus && !f->space)
-            return ('+');
-        else
-            return (' ');
-    }
-    if (f->type == 'x' || f->type == 'X')
-    {
-        if (f->hash)
-            return (f->type);
-    }
-    return ('0');
 }
 
 char *xput(char *buf, int len, int blen)

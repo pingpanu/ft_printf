@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_params.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:05:51 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/19 23:35:21 by user             ###   ########.fr       */
+/*   Updated: 2022/05/21 20:20:31 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void    reset_param(t_param *f)
     f->dot = 0;
     f->width = 0;
     f->precision = 0;
+    f->len = 0;
     f-> type = 0;
 }
 

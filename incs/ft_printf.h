@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/20 13:04:20 by user             ###   ########.fr       */
+/*   Updated: 2022/05/21 21:26:17 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_param
     int     dot;
     int     width;
     int     precision;
+    int     len;
     char    lead;
     char    type;
 }               t_param;
@@ -56,11 +57,11 @@ int         ft_putall(t_param f, va_list ap);
 t_param get_params(const char *fmt, t_param f, int *i);
 /*utilities files*/
 int         printstr(const char *str);
+char    *ft_doflag(char *str, t_param *f);
 char    *idput(char *buf, int len, int blen);
 char    *xput(char *buf, int len, int blen);
 char    *nostr_handle(int prc);
 char    *ft_dowidth(char *str, t_param *f);
-char    putflag(t_param *f, int n);
 /*function to print va_arg*/
 int         print_c(char c, t_param f);
 int         print_s(char *str, t_param f);
