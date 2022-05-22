@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/21 21:26:17 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/22 22:57:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ t_param get_params(const char *fmt, t_param f, int *i);
 /*utilities files*/
 int         printstr(const char *str);
 char    *ft_doflag(char *str, t_param *f);
-char    *idput(char *buf, int len, int blen);
+char    *idux_prc(char *str, t_param *f);
+char    *idux_prc(char *str, t_param *f);
 char    *xput(char *buf, int len, int blen);
 char    *nostr_handle(int prc);
 char    *ft_dowidth(char *str, t_param *f);

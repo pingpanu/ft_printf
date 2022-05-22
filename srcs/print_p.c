@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:34 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/18 16:06:48 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/22 22:36:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include "ft_printf.h"
 
 /*for test only
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>*/
+#include <stdio.h>*/
 
 static unsigned int    ulilen(size_t base, unsigned long int nbr)
 {

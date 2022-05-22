@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:23:27 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/20 00:17:03 by user             ###   ########.fr       */
+/*   Updated: 2022/05/22 22:35:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,37 @@
 /*for test only
 #include <stdio.h>*/
 
-static void	changestr(char *out, char *str);
-static char	*align_left(char *str, int width);
+static char *idu_zero_right(char *str, t_param *f);
+static char	*align_left(char *str, t_param *f);
 static char	*align_right(char *str, t_param *f);
 
 char    *ft_dowidth(char *str, t_param *f)
 {
-    char    *out;
+    char    *wdt;
+    int     isnum;
 
-    if (f->width <= (int)ft_strlen(str))
-        return (str);
+    isnum = 0;
+    if (f->type == 'i'|| f->type == 'd' || f->type == 'u')
+        isnum = 1;
     if (f->minus == 1)
-        out = align_left(str, f->width);
+        wdt = align_left(str, f);
+    if (f->lead == '0' && isnum == 1)
+        idu_zero_right(str, f);
     else
-        out = align_right(str, f);
-    if (!out)
+        wdt = align_right(str, f);
+    if (!wdt)
         return (NULL);
-    if (f->lead == '0' && (f->type == 'i' || f->type == 'd'))
-        changestr(out, str);
-    return (out);
+    f->len = ft_strlen(wdt);
+    return (wdt);
 }
 
-static char *align_left(char *str, int width)
+static char *align_left(char *str, t_param *f)
 {
     char    *ret;
     int     ri;
     int     si;
-    ret = ft_calloc(1, (width + 1));
+    
+    ret = ft_calloc(1, (f->width + 1));
     if (!ret)
         return (NULL);
     ri = 0;
@@ -51,6 +55,7 @@ static char *align_left(char *str, int width)
         ret[ri++] = str[si++];
     while (ret[ri])
         ret[ri++] = ' ';
+    free(str);
     return (ret);
 }
 
@@ -69,22 +74,33 @@ static char *align_right(char *str, t_param *f)
         ret[ri--] = str[si--];
     while (ri >= 0)
         ret[ri--] = f->lead;
+    free(str);
     return (ret);
 }
 
-static void	changestr(char *out, char *str)
+static char *idu_zero_right(char *str, t_param *f)
 {
-    int i;
+    char    *ret;
+    int     ri;
+    int     si;
 
-    i = 1;
-    if (str[0] == '-')
-        out[0] = '-';
-    while (out[i])
+    ret = ft_calloc(1, (f->width + 1));
+    if (!ret)
+        return (NULL);
+    ri = f->width - 1;
+    si = (int)ft_strlen(str) - 1;
+    while (si >= 0)
     {
-        if (out[i] == '-')
-            out[i] = '0';
-        i++;
+        if (str[si] == '-' || str[si] == '+' || str[si] == ' ')
+            break ;
+        ret[ri--] = str[si--];
     }
+    while (ri >= 0)
+        ret[ri--] = '0';
+    if (str[0] == '-' || str[0] == '+' || str[0] == ' ')
+        ret[0] = str[0];
+    free (str);
+    return (ret);
 }
 
 /*for test only

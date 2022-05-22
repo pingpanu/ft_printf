@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_doflag.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 20:47:26 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/21 21:28:23 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/22 17:18:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,13 @@ static char *dohash(char *str, char c);
 
 char    *ft_doflag(char *str, t_param *f)
 {
-    char    *flag;
-        
     if (f->space && (f->type == 's' || f->type == 'i' || f->type == 'd'))
-    {
-        flag = dospace(str);
-        if (!flag)
-            return (NULL);
-        return (flag);
-    }
-    if (f->plus && (f->type == 'i' || f->type == 'd') && str[0] != '-')
-    {
-        flag = doplus(str);
-        if (!flag)
-            return (NULL);
-        return (flag);
-    }
+        str = dospace(str);
+    if (f->plus && (f->type == 'i' || f->type == 'd'))
+        str = doplus(str);
     if ((f->type == 'x' || f->type == 'X') && f->hash)
-    {
-        flag = dohash(str, f->type);
-        if (!flag)
-            return (NULL);
-        return (flag);
-    }
+        str = dohash(str, f->type);
+    f->len = ft_strlen(str);
     return (str);
 }
 
@@ -49,13 +33,14 @@ static char *dospace(char *str)
 {
     char    *space;
 
-    if (str[0] == '-')
+    if (str[0] == '-' || str[0] == '+')
         return (str);
     space = ft_calloc(1, ft_strlen(str) + 2);
     if (!space)
         return (NULL);
     space[0] = ' ';
     space = ft_strcat(space, str);
+    free(str);
     return (space);
 }
 
@@ -63,11 +48,14 @@ static char *doplus(char *str)
 {
     char   *plus;
 
+    if (str[0] == '-' || str[0] == '+')
+        return (str);
     plus = ft_calloc(1, ft_strlen(str) + 2);
     if (!plus)
         return (NULL);
     plus[0] = '+';
     plus = ft_strcat(plus, str);
+    free(str);
     return (plus);
 }
 
@@ -81,5 +69,6 @@ static char *dohash(char *str, char c)
     hash[0] = '0';
     hash[1] = c;
     hash = ft_strcat(hash, str);
+    free(str);
     return (hash);
 }
