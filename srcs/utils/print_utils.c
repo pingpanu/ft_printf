@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:08:21 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/22 22:35:07 by user             ###   ########.fr       */
+/*   Updated: 2022/05/24 23:16:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 #include "ft_printf.h"
 
 /*for test only
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>*/
+#include <stdio.h>*/
 
-char    *idput(char *buf, int len, int blen)
+char    *iduput(char *buf, int len, int blen)
 {
     char    *out;
 
@@ -29,6 +26,7 @@ char    *idput(char *buf, int len, int blen)
     len -= 1;
     while (blen >= 0 && ft_isdigit(buf[blen]))
             out[len--] = buf[blen--];
+    free(buf);
     while (len >= 0)
         out[len--] = '0';
     return (out);
@@ -44,6 +42,7 @@ char *xput(char *buf, int len, int blen)
     len -= 1;
     while (blen >= 0)
             out[len--] = buf[blen--];
+    free(buf);
     while (len >= 0)
         out[len--] = '0';
     return (out);

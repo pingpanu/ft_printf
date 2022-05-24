@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:34 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/22 22:36:57 by user             ###   ########.fr       */
+/*   Updated: 2022/05/24 23:31:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,23 @@ static char    *ft_ulitoa(unsigned long int ptr)
     return (num);
 }
 
-char    *print_p(unsigned long int ptr)
+int    *print_p(unsigned long int ptr, t_param f)
 {
     char    *out;
-    char    *buf;
-    int         len;
     int         blen;
 
-    buf = ft_ulitoa(ptr);
-    if (!buf)
-        return (NULL);
-    blen = ft_strlen(buf);
-    len = blen + 2;
-    out = xput(buf, len, (blen - 1));
+    out = ft_ulitoa(ptr);
     if (!out)
         return (NULL);
-    free (buf);
+    blen = ft_strlen(out);
+    f.len = blen + 2;
+    out = xput(out, f.len, (blen - 1));
+    if (!out)
+        return (NULL);
     out[1] = 'x';
-    return (out);
+    f.len = printstr(out);
+    free(out);
+    return (f.len);
 }
 
 /*for test only

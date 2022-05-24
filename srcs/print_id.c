@@ -6,15 +6,15 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:16 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/22 23:56:44 by user             ###   ########.fr       */
+/*   Updated: 2022/05/24 23:32:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-/*for test only*/
-#include <stdio.h>
+/*for test only
+#include <stdio.h>*/
 
 int    print_id(int nbr, t_param f)
 {
@@ -37,20 +37,21 @@ int    print_id(int nbr, t_param f)
     return (f.len);
 }
 
-/*for test only*/
+/*for test only
 int main()
 {
     t_param f;
     int     len;
 
     f.type = 'd';
-    f.dot = 0;
-    f.plus = 1;
+    f.lead = '0';
+    f.dot = 1;
+    f.plus = 0;
     f.space = 0;
     f.precision = 0;
-    f.width = 0;
+    f.width = 8;
     len = print_id(42, f);
     printf("\n");
     printf("%d\n",len);
     return (0);
-}
+}*/

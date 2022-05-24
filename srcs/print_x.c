@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:04:40 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/13 15:05:21 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/24 23:36:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,29 @@
 #include "ft_printf.h"
 
 /*for test only
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>*/
+#include <stdio.h>*/
 
 static char *xlocap(char c, unsigned int unb);
 
-char    *print_x(unsigned int unb, t_param *f)
+int    *print_x(unsigned int unb, t_param f)
 {
     char    *out;
-    char    *buf;
-    int         blen;
-    int         len;
 
-    if (f->dot && !f->precision && unb == 0)
-        return ("");
-    buf = xlocap(f->type, unb);
-    if (!buf)
+    if (f.dot && !f.precision && unb == 0)
+        return (0);
+    out = xlocap(f.type, unb);
+    if (!out)
         return (NULL);
-    blen = ft_strlen(buf);
-    if (f->precision <= blen && !f->hash)
-        return (buf);
-    len = blen;
-    if (f->precision > blen)
-        len = f->precision;
-    if (f->hash)
-        len += 2;
-    out = xput(buf, len, (blen - 1));
-    free (buf);
-    if (out)
-    {
-        out[1] = putflag(f, unb);
-        return (out);
-    }
-    return (NULL);
+    f.len = ft_strlen(out);
+    if (f.dot && f.precision > f.len)
+        out = idux_prec(out, &f);
+    if (f.hash)
+        out = ft_doflag(out, &f);
+    if (f.width > f.len)
+        out = ft_dowidth(out, &f);
+    f.len = printstr(out);
+    free(out)
+    return (f.len);
 }
 
 static char *xlocap(char c, unsigned int unb)

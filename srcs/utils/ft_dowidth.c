@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:23:27 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/22 22:35:08 by user             ###   ########.fr       */
+/*   Updated: 2022/05/24 23:15:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,23 @@
 static char *idu_zero_right(char *str, t_param *f);
 static char	*align_left(char *str, t_param *f);
 static char	*align_right(char *str, t_param *f);
-
 char    *ft_dowidth(char *str, t_param *f)
 {
-    char    *wdt;
     int     isnum;
 
     isnum = 0;
     if (f->type == 'i'|| f->type == 'd' || f->type == 'u')
         isnum = 1;
     if (f->minus == 1)
-        wdt = align_left(str, f);
+        str = align_left(str, f);
     if (f->lead == '0' && isnum == 1)
-        idu_zero_right(str, f);
+        str = idu_zero_right(str, f);
     else
-        wdt = align_right(str, f);
-    if (!wdt)
+        str = align_right(str, f);
+    if (!str)
         return (NULL);
-    f->len = ft_strlen(wdt);
-    return (wdt);
+    f->len = ft_strlen(str);
+    return (str);
 }
 
 static char *align_left(char *str, t_param *f)
@@ -53,9 +51,9 @@ static char *align_left(char *str, t_param *f)
     si = 0;
     while (str[si])
         ret[ri++] = str[si++];
+    free (str);
     while (ret[ri])
         ret[ri++] = ' ';
-    free(str);
     return (ret);
 }
 
@@ -69,12 +67,12 @@ static char *align_right(char *str, t_param *f)
     if (!ret)
         return (NULL);
     ri = f->width - 1;
-    si = (int)ft_strlen(str) - 1;
+    si = f->len - 1;
     while (si >= 0)
         ret[ri--] = str[si--];
-    while (ri >= 0)
-        ret[ri--] = f->lead;
     free(str);
+    while (ri >= 0)
+        ret[ri--] = ' ';
     return (ret);
 }
 
@@ -88,7 +86,7 @@ static char *idu_zero_right(char *str, t_param *f)
     if (!ret)
         return (NULL);
     ri = f->width - 1;
-    si = (int)ft_strlen(str) - 1;
+    si = f->len - 1;
     while (si >= 0)
     {
         if (str[si] == '-' || str[si] == '+' || str[si] == ' ')
@@ -110,10 +108,11 @@ int main()
     t_param f;
 
     f.lead = ' ';
-    f.type = 's';
+    f.type = 'i';
     f.width = 20;
-    f.minus = 1;
-    result = ft_dowidth("To the moon", &f);
+    f.minus = 0;
+    f.len = 5;
+    result = ft_dowidth("+0042", &f);
     printf("%s\n", result);
     return (0);
 }*/

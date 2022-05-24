@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/22 22:57:39 by user             ###   ########.fr       */
+/*   Updated: 2022/05/24 22:54:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ t_param get_params(const char *fmt, t_param f, int *i);
 /*utilities files*/
 int         printstr(const char *str);
 char    *ft_doflag(char *str, t_param *f);
-char    *idux_prc(char *str, t_param *f);
-char    *idux_prc(char *str, t_param *f);
+char    *idux_prec(char *str, t_param *f);
+char    *iduput(char *buf, int len, int blen);
 char    *xput(char *buf, int len, int blen);
 char    *nostr_handle(int prc);
 char    *ft_dowidth(char *str, t_param *f);
