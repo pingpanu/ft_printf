@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:23:27 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/24 23:15:52 by user             ###   ########.fr       */
+/*   Updated: 2022/05/26 00:08:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char    *ft_dowidth(char *str, t_param *f)
         isnum = 1;
     if (f->minus == 1)
         str = align_left(str, f);
-    if (f->lead == '0' && isnum == 1)
+    else if (f->lead == '0' && isnum == 1)
         str = idu_zero_right(str, f);
     else
         str = align_right(str, f);
@@ -42,18 +42,19 @@ static char *align_left(char *str, t_param *f)
 {
     char    *ret;
     int     ri;
-    int     si;
     
     ret = ft_calloc(1, (f->width + 1));
     if (!ret)
         return (NULL);
     ri = 0;
-    si = 0;
-    while (str[si])
-        ret[ri++] = str[si++];
-    free (str);
-    while (ret[ri])
+    while (str[ri])
+    {
+        ret[ri] = str[ri];
+        ri++;
+    }
+    while (ri < f->width)
         ret[ri++] = ' ';
+    free(str);
     return (ret);
 }
 
@@ -104,15 +105,18 @@ static char *idu_zero_right(char *str, t_param *f)
 /*for test only
 int main()
 {
-    char *result;
+    char    *result;
+    char    *buf;
     t_param f;
 
     f.lead = ' ';
     f.type = 'i';
-    f.width = 20;
-    f.minus = 0;
-    f.len = 5;
-    result = ft_dowidth("+0042", &f);
-    printf("%s\n", result);
+    f.width = 10;
+    f.minus = 1;
+    f.len = 7;
+    buf = ft_strdup("winter");
+    result = ft_dowidth(buf, &f);
+    printf("|%s|\n", result);
+    free(result);
     return (0);
 }*/
