@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:23:27 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/26 00:08:10 by user             ###   ########.fr       */
+/*   Updated: 2022/05/28 04:07:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ char    *ft_dowidth(char *str, t_param *f)
     int     isnum;
 
     isnum = 0;
-    if (f->type == 'i'|| f->type == 'd' || f->type == 'u')
+    if (f->type != 's' || f->type != 'p')
         isnum = 1;
     if (f->minus == 1)
         str = align_left(str, f);
-    else if (f->lead == '0' && isnum == 1)
+    else if (f->lead == '0' && isnum == 1 && *str != '\0')
         str = idu_zero_right(str, f);
     else
         str = align_right(str, f);
@@ -77,15 +77,11 @@ static char *align_right(char *str, t_param *f)
     return (ret);
 }
 
-static char *idu_zero_right(char *str, t_param *f)
+static void width_zero(char *ret, char *str, t_param *f)
 {
-    char    *ret;
     int     ri;
     int     si;
 
-    ret = ft_calloc(1, (f->width + 1));
-    if (!ret)
-        return (NULL);
     ri = f->width - 1;
     si = f->len - 1;
     while (si >= 0)
@@ -98,6 +94,23 @@ static char *idu_zero_right(char *str, t_param *f)
         ret[ri--] = '0';
     if (str[0] == '-' || str[0] == '+' || str[0] == ' ')
         ret[0] = str[0];
+}
+
+static char *idu_zero_right(char *str, t_param *f)
+{
+    char    *ret;
+
+    if (f->dot == 1 && f->width > f->precision)
+    {
+        f->lead = ' ';
+        ret = align_right(str, f);
+        return (ret);
+    }
+    ret = ft_calloc(1, (f->width + 1));
+    if (!ret)
+        return (NULL);
+    
+    width_zero(ret, str, f);
     free (str);
     return (ret);
 }

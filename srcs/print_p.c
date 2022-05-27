@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:34 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/28 03:30:49 by user             ###   ########.fr       */
+/*   Updated: 2022/05/28 04:20:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static size_t    ullilen(size_t base, unsigned long long int nbr)
 {
     size_t  len;
 
+    if (nbr == 0)
+        return (1);
     len = 0;
     while (nbr != 0)
     {

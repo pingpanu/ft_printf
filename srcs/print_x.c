@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:04:40 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 21:22:00 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 04:29:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,16 @@ int    print_x(unsigned int unb, t_param f)
 {
     char    *out;
 
-    if (f.dot && !f.precision && unb == 0)
-        return (0);
-    out = xlocap(f.type, unb);
+    if (f.dot && f.precision == 0 && unb == 0)
+        out = ft_calloc(1, 1);
+    else
+        out = xlocap(f.type, unb);
     if (!out)
         return (0);
     f.len = ft_strlen(out);
     if (f.dot && f.precision > f.len)
         out = idux_prec(out, &f);
-    if (f.hash)
+    if (f.hash && unb != 0)
         out = ft_doflag(out, &f);
     if (f.width > f.len)
         out = ft_dowidth(out, &f);
@@ -57,12 +58,12 @@ int main()
 {
     t_param f;
 
-    f.type = 'X';
-    f.dot = 1;
-    f.hash = 0;
-    f.precision = 5;
+    f.type = 'x';
+    f.dot = 0;
+    f.hash = 1;
+    f.precision = 0;
     f.width = 10;
-    f.len = print_x(20000, f);
+    f.len = print_x(0, f);
     printf("\n%i\n", f.len);
     return (0);
 }*/

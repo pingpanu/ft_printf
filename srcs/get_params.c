@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_params.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:05:51 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 21:52:05 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 04:10:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_param get_params(const char *fmt, t_param f, int *i)
             f.plus = 1;
         if (fmt[*i] == ' ')
             f.space = 1;
+        if (fmt[*i] == '#')
+            f.hash = 1;
         if (f.width == 0 && f.dot == 0 && fmt[*i] == '0')
             f.lead = '0';
         if (fmt[*i] == '.')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_doflag.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 20:47:26 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 15:12:17 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 04:20:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static char *dohash(char *str, char c);
 
 char    *ft_doflag(char *str, t_param *f)
 {
-    /*if (f->space && (f->type == 's' || f->type == 'i' || f->type == 'd'))
-        str = dospace(str);*/
     if (f->plus && (f->type == 'i' || f->type == 'd'))
         str = doplus(str);
     if ((f->type == 'x' || f->type == 'X') && f->hash)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:08:06 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 15:27:04 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 03:46:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int    print_u(unsigned int nb, t_param f)
     char    *out;
 
     if (f.dot && f.precision == 0 && nb == 0)
-        return (0);
-    out = ft_uitoa_base(DIGIT, nb);
+        out = ft_calloc(1, 1);
+    else
+        out = ft_uitoa_base(DIGIT, nb);
     if (!out)
         return (0);
     f.len = ft_strlen(out);
