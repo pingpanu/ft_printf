@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:05:02 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/19 22:51:38 by user             ###   ########.fr       */
+/*   Updated: 2022/05/27 22:46:42 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_printf(const char *format, ...)
 	t_param		f;
 
 	i = 0;
-	done = -1;
+	done = 0;
 	va_start (arg, format);
 	while (format[i])
 	{

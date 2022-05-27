@@ -6,7 +6,7 @@
 /*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 22:49:17 by user              #+#    #+#             */
-/*   Updated: 2022/05/27 21:18:56 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:47:48 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int ft_putall(t_param f, va_list ap)
 {
     int		len;
-	
+
 	if (f.type == 'c')
 		len = print_c(va_arg(ap, int), f);
 	if (f.type == '%')

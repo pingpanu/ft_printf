@@ -6,7 +6,7 @@
 /*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:05:51 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/21 20:20:31 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/27 21:52:05 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    reset_param(t_param *f)
     f->width = 0;
     f->precision = 0;
     f->len = 0;
-    f-> type = 0;
+    f->type = 0;
 }
 
 t_param get_params(const char *fmt, t_param f, int *i)

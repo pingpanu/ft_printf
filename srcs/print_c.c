@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:04 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/24 23:29:32 by user             ###   ########.fr       */
+/*   Updated: 2022/05/27 22:45:48 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,64 +16,72 @@
 /*for test only
 #include <stdio.h>*/
 
-static int  putc_left(char c, int width)
+static int  putc_left(char c, t_param *f)
 {
-    int     i;
+    int     len;
 
-    i = 0;
-    while (i < width)
+    len = 0;
+    while (f->len < f->width)
     {
-        if (i == 0)
+        if (f->len == 0)
         {
             ft_putchar_fd(c, 1);
-            i++;
+            len += 2;
+            f->len++;
         }
-        ft_putchar_fd(' ', 1);
-        i++;
+        len += write(1, " ", 1);
+        f->len++;
     }
-    return (i);
+    return (len);
 }
 
-static int  putc_right(char c, int width)
+static int  putc_right(char c, t_param *f)
 {
-    int     i;
+    int     len;
 
-    i = 0;
-    while (i < width)
+    len = 0;
+    while (f->len < f->width)
     {
-        if (i == width - 1)
+        if (f->len == f->width - 1)
+        {
             ft_putchar_fd(c, 1);
-        ft_putchar_fd(' ', 1);
-        i++;
+            len += 2;
+        }
+        len += write(1, " ", 1);
+        f->len++;
     }
-    return (i);
+    return (len);
 }
 
 int     print_c(char c, t_param f)
 {
-    if (f.width == 0 || f.type == '%')
-    {
-        ft_putchar_fd(c, 1);
-        return (1);
-    }
-    if (f.minus == 1)
-        f.len = putc_left(c, f.width);
+    int     len;
+
+    if (f.minus == 1 && f.width > 1)
+        len = putc_left(c, &f);
+    else if (f.minus == 0 && f.width > 1)
+        len = putc_right(c, &f);
     else
-        f.len = putc_right(c, f.width);
-    return (f.len);
+    {
+        len = 2;
+        ft_putchar_fd(c, 1);
+    }
+    return (len);
 }
 
 /*for test only
 int main()
 {
     int         len;
-    char    b = 's';
+    char        b = '0';
     t_param f;
 
     f.minus = 0;
-    f.width = 5;
+    f.width = 0;
     f.type = 'c';
     f.len = print_c(b, f);
-    printf("\n%d\n", f.len);
+    printf("\n%i\n", f.len);
+    f.len = printf("%c\n",'0');
+    printf("%i\n", f.len);
     return (0);
 }*/
