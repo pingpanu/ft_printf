@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:07:57 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/22 22:39:45 by user             ###   ########.fr       */
+/*   Updated: 2022/05/27 15:14:16 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int main()
     int         len;
 
     f.type = 's';
-    f.dot = 1;
+    f.dot = 0;
     f.precision = 5;
-    f.width = 10;
+    f.width = 15;
     f.lead = ' ';
     f.space = 0;
     f.minus = 0;

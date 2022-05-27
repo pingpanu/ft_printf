@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   idux_prec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 22:27:24 by user              #+#    #+#             */
-/*   Updated: 2022/05/24 23:14:07 by user             ###   ########.fr       */
+/*   Updated: 2022/05/27 17:10:17 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ char    *idux_prec(char *str, t_param *f)
         prc = xput(str, f->precision, slen);
         if (!prc)
             return (NULL);
-        return (prc);
     }
-    prc = iduput(str, f->precision, slen);
-    if (!prc)
-        return (NULL);
-    if (str[0] == '-')
-        prc[0] = '-';
+    else
+    {
+        prc = iduput(str, f->precision, slen);
+        if (!prc)
+            return (NULL);
+        if (str[0] == '-')
+            prc[0] = '-';
+    }
+    f->len = ft_strlen(prc);
     return (prc);
 }
 

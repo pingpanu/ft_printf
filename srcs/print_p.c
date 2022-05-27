@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:34 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/24 23:31:51 by user             ###   ########.fr       */
+/*   Updated: 2022/05/27 21:18:54 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,19 @@ static char    *ft_ulitoa(unsigned long int ptr)
     return (num);
 }
 
-int    *print_p(unsigned long int ptr, t_param f)
+int    print_p(unsigned long int ptr, t_param f)
 {
     char    *out;
     int         blen;
 
     out = ft_ulitoa(ptr);
     if (!out)
-        return (NULL);
+        return (0);
     blen = ft_strlen(out);
     f.len = blen + 2;
     out = xput(out, f.len, (blen - 1));
     if (!out)
-        return (NULL);
+        return (0);
     out[1] = 'x';
     f.len = printstr(out);
     free(out);
@@ -75,9 +75,12 @@ int    *print_p(unsigned long int ptr, t_param f)
 /*for test only
 int main()
 {
-    char    *ptr;
+    int     a = 10;
+    int     *b;
+    t_param f;
 
-    ptr = print_p(2938041039);
-    printf("%s\n", ptr);
+    b = &a;
+    f.len = print_p((unsigned long int)b, f);
+    printf("\n%d\n", f.len);
     return (0);
 }*/

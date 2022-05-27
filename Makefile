@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
+#    By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:53:17 by user              #+#    #+#              #
-#    Updated: 2022/05/19 23:31:46 by user             ###   ########.fr        #
+#    Updated: 2022/05/27 21:21:31 by pingpanu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,15 @@ SRC_NAME = ft_printf.c \
 	  	   get_params.c \
 	  	   ft_putall.c \
 		   utils/ft_dowidth.c \
+		   utils/ft_doflag.c \
+		   utils/idux_prec.c \
+		   utils/print_utils.c \
 	  	   print_c.c \
 	  	   print_id.c \
 	  	   print_p.c \
 	  	   print_s.c \
 	  	   print_u.c \
-	  	   print_x.c \
-	  	   utils/print_utils.c\
+	  	   print_x.c
 
 SRCS = $(addprefix $(SDIR), $(SRC_NAME))
 OBJS = $(addprefix $(BDIR), $(SRC_NAME:.c=.o))
@@ -87,7 +89,7 @@ norm:
 		 @ norminette $(SRCS) $(INC) $(LIB) | grep -v Norme -B1 || true
 
 test: re
-	@$(CC) $(FLAGS) -o khaoniao.out -L . lftprintf main.c 
+	@$(CC) $(FLAGS) -o khaoniao.out -L . -lftprintf main.c 
 	@echo "$(GREEN)=== Credit TSOMSA (viruskizz github) Thanks ===$(DEFCOLOR)"
 	@echo "$(BLUE)=== KHAONIAO ===$(DEFCOLOR)"
 

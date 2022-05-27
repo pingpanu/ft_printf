@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/24 22:54:26 by user             ###   ########.fr       */
+/*   Updated: 2022/05/27 15:45:05 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int         print_c(char c, t_param f);
 int         print_s(char *str, t_param f);
 int         print_id(int nbr, t_param f);
 int         print_u(unsigned int nb, t_param f);
-int         print_p(unsigned long int ptr);
+int         print_p(unsigned long int ptr, t_param f);
 int         print_x(unsigned int unb, t_param f);
 #endif

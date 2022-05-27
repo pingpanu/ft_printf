@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 22:49:17 by user              #+#    #+#             */
-/*   Updated: 2022/05/24 23:26:51 by user             ###   ########.fr       */
+/*   Updated: 2022/05/27 21:18:56 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int ft_putall(t_param f, va_list ap)
     if (f.type == 's')
         len = print_s(va_arg(ap, char *), f);
     if (f.type == 'p')
-        len = print_p(va_arg(ap, unsigned long int));
+        len = print_p(va_arg(ap, unsigned long int), f);
     if (f.type == 'u')
         len = print_u(va_arg(ap, unsigned int), f);
     if (f.type == 'x' || f.type == 'X')
