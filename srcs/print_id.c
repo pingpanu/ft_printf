@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_id.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:16 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 15:22:35 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:31:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int    print_id(int nbr, t_param f)
         return (0);
     f.len = ft_strlen(out);
     if (out[0] == '-')
-        f.precision += 1;
+        f.len -= 1;
     if (f.dot && f.precision > f.len)
         out = idux_prec(out, &f);
     if (f.space || f.plus)

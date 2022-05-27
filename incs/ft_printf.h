@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 15:45:05 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 01:14:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define HEXLO  "0123456789abcdef"
 # define HEXCAP "0123456789ABCDEF"
 /*to print null per LINUX or MAC*/
-# ifndef __linux__
+# ifdef __linux__
 #  define IS_LINUX 1
 #  define OS "LINUX"
 #  define S_EMPTY "(null)"
@@ -61,7 +61,7 @@ char    *ft_doflag(char *str, t_param *f);
 char    *idux_prec(char *str, t_param *f);
 char    *iduput(char *buf, int len, int blen);
 char    *xput(char *buf, int len, int blen);
-char    *nostr_handle(int prc);
+char    *nostr_handle(t_param *f);
 char    *ft_dowidth(char *str, t_param *f);
 /*function to print va_arg*/
 int         print_c(char c, t_param f);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:08:21 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 17:10:21 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 03:01:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char    *iduput(char *buf, int len, int blen)
     len -= 1;
     while (blen >= 0 && ft_isdigit(buf[blen]))
             out[len--] = buf[blen--];
-    free(buf);
     while (len >= 0)
         out[len--] = '0';
     return (out);
@@ -42,17 +41,16 @@ char *xput(char *buf, int len, int blen)
     len -= 1;
     while (blen >= 0)
             out[len--] = buf[blen--];
-    free(buf);
     while (len >= 0)
         out[len--] = '0';
     return (out);
 }
 
-char *nostr_handle(int prc)
+char *nostr_handle(t_param *f)
 {
     char *buf;
 
-    if (IS_LINUX && prc < 6)
+    if (f->dot && f->precision < 6 )
     {
         buf = ft_calloc(1, 1);
         return (buf);

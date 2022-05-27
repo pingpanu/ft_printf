@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:07:57 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 15:14:16 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 03:05:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ int     print_s(char *str, t_param f)
 {
     char    *ret;
 
-    f.len = ft_strlen(str);
-    if (!str || (f.dot && f.precision == 0))
-        f.len = printstr(nostr_handle(f.precision));
-    ret = ft_strdup(str);
+    
+    if (str == NULL)
+        ret = nostr_handle(&f);
+    else
+        ret = ft_strdup(str);
+    f.len = ft_strlen(ret);
     if (f.dot && f.precision < f.len)
         ret = strcut(ret, &f);
     if (f.space == 1)

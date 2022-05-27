@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:05:02 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 23:06:22 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 00:23:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_printf(const char *format, ...)
 		else
 		{
 			ft_putchar_fd(format[i++], 1);
-			f.len++;
+			done++;
 		}
 	}
 	va_end (arg);

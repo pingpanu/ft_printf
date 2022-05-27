@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:06:04 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 23:11:10 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 01:42:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int  putc_left(char c, t_param *f)
     {
         if (f->len == 0)
             ft_putchar_fd(c, 1);
-        ft_putchar_fd(' ', 1);
+        else
+            ft_putchar_fd(' ', 1);
         f->len++;
     }
     return (f->width);
@@ -34,7 +35,8 @@ static int  putc_right(char c, t_param *f)
     {
         if (f->len == f->width - 1)
             ft_putchar_fd(c, 1);
-        ft_putchar_fd(' ', 1);
+        else
+            ft_putchar_fd(' ', 1);
         f->len++;
     }
     return (f->width);
@@ -44,9 +46,9 @@ int     print_c(char c, t_param f)
 {
     int     len;
 
-    if (f.minus == 1 && f.width > 1)
+    if (f.minus == 1 && f.width > 0)
         len = putc_left(c, &f);
-    else if (f.minus == 0 && f.width > 1)
+    else if (f.minus == 0 && f.width > 0)
         len = putc_right(c, &f);
     else
         len = write(1, &c, 1);
