@@ -6,7 +6,7 @@
 /*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:05:02 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/27 22:46:42 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/27 23:06:22 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_printf(const char *format, ...)
 		else
 		{
 			ft_putchar_fd(format[i++], 1);
-			done++;
+			f.len++;
 		}
 	}
 	va_end (arg);
