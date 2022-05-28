@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pingpanu <pingpanu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:07:57 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/28 14:26:34 by pingpanu         ###   ########.fr       */
+/*   Updated: 2022/05/28 15:54:39 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,19 @@ static char *strcut(char *str, t_param *f);
 int     print_s(char *str, t_param f)
 {
     char    *ret;
+    int     noflag;
 
-    
     if (str == NULL)
         ret = nostr_handle();
     else
         ret = ft_strdup(str);
+    noflag = 0;
+    if (ret[0] == '\0' || ret[0] == ' ' || ft_isdigit(ret[0]))
+        noflag = 1;
     f.len = ft_strlen(ret);
     if (f.dot && f.precision < f.len)
         ret = strcut(ret, &f);
-    if (f.space == 1)
+    if (f.space == 1 && noflag == 0)
         ret = ft_doflag(ret, &f);
     if (f.width > f.len)
         ret = ft_dowidth(ret, &f);
