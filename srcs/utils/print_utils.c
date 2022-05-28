@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:08:21 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/28 03:01:26 by user             ###   ########.fr       */
+/*   Updated: 2022/05/28 14:25:02 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ char *xput(char *buf, int len, int blen)
     return (out);
 }
 
-char *nostr_handle(t_param *f)
+char *nostr_handle(void)
 {
     char *buf;
 
-    if (f->dot && f->precision < 6 )
+    /*if (f->dot && f->precision < 6 )
     {
         buf = ft_calloc(1, 1);
         return (buf);
-    }
+    }*/
     buf = ft_calloc(1, (S_EMPTY_L + 1));
     ft_memcpy(buf, S_EMPTY, S_EMPTY_L);
     return (buf);

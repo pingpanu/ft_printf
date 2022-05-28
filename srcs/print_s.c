@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:07:57 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/28 03:05:48 by user             ###   ########.fr       */
+/*   Updated: 2022/05/28 14:26:34 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int     print_s(char *str, t_param f)
 
     
     if (str == NULL)
-        ret = nostr_handle(&f);
+        ret = nostr_handle();
     else
         ret = ft_strdup(str);
     f.len = ft_strlen(ret);

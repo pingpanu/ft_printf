@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:33 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/28 01:14:58 by user             ###   ########.fr       */
+/*   Updated: 2022/05/28 14:25:38 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char    *ft_doflag(char *str, t_param *f);
 char    *idux_prec(char *str, t_param *f);
 char    *iduput(char *buf, int len, int blen);
 char    *xput(char *buf, int len, int blen);
-char    *nostr_handle(t_param *f);
+char    *nostr_handle(void);
 char    *ft_dowidth(char *str, t_param *f);
 /*function to print va_arg*/
 int         print_c(char c, t_param f);
