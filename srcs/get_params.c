@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:05:51 by pingpanu          #+#    #+#             */
-/*   Updated: 2022/05/28 04:10:44 by user             ###   ########.fr       */
+/*   Updated: 2022/06/02 12:55:53 by pingpanu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_param get_params(const char *fmt, t_param f, int *i)
             f.width = (f.width * 10) + (fmt[*i] - '0');
         if (f.dot == 1 && ft_isdigit(fmt[*i]))
             f.precision = (f.precision * 10) + (fmt[*i] - '0');
-        if (ft_exist(SPECS, fmt[*i]))
+        if (ft_isalpha(fmt[*i]) || fmt[*i] == '%')
             f.type = fmt[*i];
         (*i)++;
     }
