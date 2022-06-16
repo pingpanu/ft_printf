@@ -36,7 +36,9 @@ Here's additional feature of the ft_printf
 -- Testing --
 
   I had tested the program with these tester
+  
     1) https://github.com/Tripouille/printfTester (100%)
+    
     2) https://github.com/paulo-santana/ft_printf_tester (100%)
  
  -- How its work --
